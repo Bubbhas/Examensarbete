@@ -8,6 +8,7 @@ namespace GameOfDojan.Services
 {
     public interface IShoePicService
     {
+
         
     }
 }
