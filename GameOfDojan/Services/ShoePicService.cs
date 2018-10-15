@@ -12,16 +12,33 @@ namespace GameOfDojan.Services
     {
         public async Task<string> AddPicToFolder(List<IFormFile> files)
         {
-            string newFilePath = @"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\a.jpg";
-            var filePath = Path.GetTempFileName();
+            string newFilePath = "";
+            var filePath = "";
             foreach (var formFile in files)
             {
+                newFilePath = GetNewFilePath(formFile);
+                filePath = Path.GetTempFileName();
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await formFile.CopyToAsync(stream);
                 }
             }
             File.Copy(filePath, newFilePath);
+            return newFilePath;
+        }
+
+        private string GetNewFilePath(IFormFile formFile)
+        {
+            string randomFileName = Path.GetRandomFileName();
+            string newFilePath = "";
+            if (formFile.FileName.ToLower().EndsWith("jpg"))
+            {
+                newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.jpg";
+            }
+            else if (formFile.FileName.ToLower().EndsWith("png"))
+            {
+                newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.png";
+            }
             return newFilePath;
         }
     }
