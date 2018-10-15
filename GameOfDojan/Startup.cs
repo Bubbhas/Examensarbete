@@ -47,6 +47,9 @@ namespace GameOfDojan
                 options => options.UseSqlServer(_configuration.GetConnectionString("GameOfDojan")));
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
             //services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+
+            services.AddTransient<IShoePicService, ShoePicService>();
+
             services.AddMvc();
         }
 

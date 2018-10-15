@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GameOfDojan.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,23 +12,23 @@ namespace GameOfDojan.Controllers
 {
     public class ShoePicController : Controller
     {
+        private readonly IShoePicService _shoePicService;
+
+        public ShoePicController(IShoePicService shoePicService)
+        {
+            _shoePicService = shoePicService;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadPic(List<IFormFile> files)
+        public IActionResult UploadPic(List<IFormFile> files)
         {
-            var filePath = Path.GetTempFileName();
-            foreach (var formFile in files)
-            {
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await formFile.CopyToAsync(stream);
-                }
-            }
-            return Ok();
+
+            return Ok(_shoePicService.AddPicToFolder(files));
         }
     }
 }
