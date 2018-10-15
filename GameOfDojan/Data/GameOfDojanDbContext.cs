@@ -12,5 +12,7 @@ namespace GameOfDojan.Data
         }
 
         public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<ShoePic> ShoePics { get; set; }
+
     }
 }
