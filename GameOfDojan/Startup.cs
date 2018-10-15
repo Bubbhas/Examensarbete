@@ -40,20 +40,17 @@ namespace GameOfDojan
 
             // Registera dina tjänster
 
-            services.AddSingleton<IGreeter, Greeter>();
 
             services.AddScoped<IHttpService, HttpService>();
             services.AddDbContext<GameOfDojanDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("GameOfDojan")));
-            services.AddScoped<IRestaurantData, SqlRestaurantData>();
-            //services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
 
             services.AddTransient<IShoePicService, ShoePicService>();
 
             services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IGreeter greeter, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {               
