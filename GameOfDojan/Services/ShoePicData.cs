@@ -22,10 +22,10 @@ namespace GameOfDojan.Services
 
         }
 
-        public ShoePic GetPicFromFolder(int id)
-        {
-            return 
-        } 
+        //public ShoePic GetPicFromFolder(int id)
+        //{
+        //    return Ok();
+        //} 
 
         public ShoePic Get(int id)
         {

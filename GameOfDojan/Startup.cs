@@ -41,7 +41,7 @@ namespace GameOfDojan
             // Registera dina tjänster
 
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddScoped<IRestaurantService, RestaurantService>();
+
             services.AddScoped<IHttpService, HttpService>();
             services.AddDbContext<GameOfDojanDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("GameOfDojan")));
