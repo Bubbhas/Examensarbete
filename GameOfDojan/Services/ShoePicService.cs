@@ -39,6 +39,10 @@ namespace GameOfDojan.Services
             {
                 newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.png";
             }
+            else
+            {
+                return BadImageFormatException();
+            }
             return newFilePath;
         }
     }
