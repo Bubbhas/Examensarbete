@@ -9,7 +9,7 @@ namespace GameOfDojan.Services
 {
     public interface IShoePicData
     {
-        ShoePic Get(int id);
-        ShoePic GetPicFromFolder(int id);
+        //ShoePic Get(int id);
+        //ShoePic GetPicFromFolder(int id);
     }
 }

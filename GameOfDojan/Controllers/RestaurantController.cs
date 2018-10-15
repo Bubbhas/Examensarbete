@@ -10,14 +10,13 @@ namespace GameOfDojan.Controllers
     {
         private IRestaurantData _restaurantData;
         private IGreeter _greeter;
-        private readonly IRestaurantService _restaurantService;
         private readonly IHttpService _httpService;
 
-        public RestaurantController(IRestaurantData restaurantData, IGreeter greeter, IRestaurantService restaurantService, IHttpService httpService)
+        public RestaurantController(IRestaurantData restaurantData, IGreeter greeter, IHttpService httpService)
         {
             _restaurantData = restaurantData;
             _greeter = greeter;
-            _restaurantService = restaurantService;
+
             _httpService = httpService;
         }
 
@@ -27,7 +26,6 @@ namespace GameOfDojan.Controllers
             var model = new RestaurantIndexViewModel();
             model.Restaurants = _restaurantData.GetAll();
             model.Hello = _greeter.GetTime();
-            model.SomeCountMessage = _restaurantService.CountMessage();
             model.SomethingFromGoogle =  _httpService.Get("http://www.google.com").Result.Substring(0,100);
             return View(model);
         }
