@@ -6,7 +6,7 @@ namespace GameOfDojan.Controllers
     {
         public IActionResult Index()
         {
-            return RedirectToAction("Index", "ShoePic");
+            return View();
         }
 
     }
