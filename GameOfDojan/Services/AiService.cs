@@ -23,7 +23,7 @@ namespace GameOfDojan.Services
             client.DefaultRequestHeaders.Add("Prediction-Key", "731ed03b88d54136b9195253ccf3c6c9");
 
             // Prediction URL - replace this example URL with your valid prediction URL.
-            string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/9134d9d3-6655-495f-9759-e0ac6a6e8123/image";
+            string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/9134d9d3-6655-495f-9759-e0ac6a6e8123/image/nostore";
 
             HttpResponseMessage response;
 
@@ -40,5 +40,6 @@ namespace GameOfDojan.Services
                 //Console.WriteLine(await response.Content.ReadAsStringAsync());
             }
         }
+
     }
 }
