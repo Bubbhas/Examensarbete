@@ -13,10 +13,12 @@ namespace GameOfDojan.Controllers
     public class ShoePicController : Controller
     {
         private readonly IShoePicService _shoePicService;
+        private readonly IAiService _aiService;
 
-        public ShoePicController(IShoePicService shoePicService)
+        public ShoePicController(IShoePicService shoePicService, IAiService aiService)
         {
             _shoePicService = shoePicService;
+            _aiService = aiService;
         }
 
         public IActionResult Index()
@@ -31,12 +33,14 @@ namespace GameOfDojan.Controllers
             try
             {
                 filePath = await _shoePicService.AddPicToFolder(files);
+             
             }
             catch(Exception e)
             {
                 return BadRequest("Filerna måste vara jpg eller png" + e.Message);
             }
 
+           await _aiService.MakePredictionRequest(filePath);
             return Ok(filePath);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameOfDojan.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,12 @@ namespace GameOfDojan.Controllers
 {
     public class AiController
     {
-        
+        private readonly IAiService _aiService;
+        public AiController(AiService aiService)
+        {
+            _aiService = aiService;
+        }
+
+
     }
 }

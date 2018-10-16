@@ -46,6 +46,7 @@ namespace GameOfDojan
                 options => options.UseSqlServer(_configuration.GetConnectionString("GameOfDojan")));
 
             services.AddTransient<IShoePicService, ShoePicService>();
+            services.AddTransient<IAiService, AiService>();
 
             services.AddMvc();
         }

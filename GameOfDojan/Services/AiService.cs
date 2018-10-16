@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameOfDojan.ViewModels;
+using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -6,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace GameOfDojan.Services
 {
-    public class AiService
+    public class AiService : IAiService
     {
-        static byte[] GetImageAsByteArray(string imageFilePath)
+        public byte[] GetImageAsByteArray(string imageFilePath)
         {
             FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
             BinaryReader binaryReader = new BinaryReader(fileStream);
             return binaryReader.ReadBytes((int)fileStream.Length);
         }
 
-        static async Task MakePredictionRequest(string imageFilePath)
+        public async Task<Rootobject> MakePredictionRequest(string imageFilePath)
         {
             var client = new HttpClient();
 
@@ -36,8 +38,12 @@ namespace GameOfDojan.Services
                 response = await client.PostAsync(url, content);
 
                 //Här ska den returnera JSON-fil istället
+                //var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(response);
+               // string json = JsonConvert.SerializeObject(response);
+
                 
-                //Console.WriteLine(await response.Content.ReadAsStringAsync());
+                string result =  await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Rootobject>(result);
             }
         }
 
