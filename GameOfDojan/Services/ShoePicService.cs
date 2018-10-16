@@ -38,12 +38,12 @@ namespace GameOfDojan.Services
             }
             else if (formFile.FileName.ToLower().EndsWith("png"))
             {
-                newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.png";
+             newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.png";
             }
             else
             {
-                 throw new Exception("Vi tillåter endast jpg eller png filer");
-                
+                 throw new Exception();
+
             }
             return newFilePath;
         }
