@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,7 +42,8 @@ namespace GameOfDojan.Services
             }
             else
             {
-                return BadImageFormatException();
+                 throw new Exception("Vi tillåter endast jpg eller png filer");
+                
             }
             return newFilePath;
         }
