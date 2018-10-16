@@ -27,17 +27,17 @@ namespace GameOfDojan.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadPic(List<IFormFile> files)
         {
-            var fileName = "";
+            var filePath = "";
             try
             {
-                fileName = await _shoePicService.AddPicToFolder(files);
+                filePath = await _shoePicService.AddPicToFolder(files);
             }
             catch(Exception e)
             {
                 return BadRequest("Filerna måste vara jpg eller png" + e.Message);
             }
 
-            return Ok(fileName);
+            return Ok(filePath);
         }
     }
 }

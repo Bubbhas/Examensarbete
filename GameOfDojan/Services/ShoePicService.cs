@@ -32,11 +32,11 @@ namespace GameOfDojan.Services
         {
             string randomFileName = Path.GetRandomFileName();
             string newFilePath = "";
-            if (formFile.FileName.ToLower().EndsWith("jpg"))
+            if (formFile.FileName.ToLower().EndsWith(".jpg"))
             {
                 newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.jpg";
             }
-            else if (formFile.FileName.ToLower().EndsWith("png"))
+            else if (formFile.FileName.ToLower().EndsWith(".png"))
             {
              newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.png";
             }
