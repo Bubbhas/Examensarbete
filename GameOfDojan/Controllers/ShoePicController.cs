@@ -40,8 +40,8 @@ namespace GameOfDojan.Controllers
                 return BadRequest("Filerna måste vara jpg eller png" + e.Message);
             }
 
-           await _aiService.MakePredictionRequest(filePath);
-            return Ok(filePath);
+           var svar = await _aiService.MakePredictionRequest(filePath);
+            return View("AiResponse", svar);
         }
     }
 }
