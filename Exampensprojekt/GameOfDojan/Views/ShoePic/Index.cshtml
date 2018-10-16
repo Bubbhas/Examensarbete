@@ -1,0 +1,20 @@
+﻿@model ShoePic
+
+
+
+<h1>Game Of Dojan</h1>
+<div>
+    <form method="post" enctype="multipart/form-data" asp-action="UploadPic">
+        <div class="form-group">
+            <div class="">
+                <p>Testa din sko:</p>
+                <input type="file" name="files" multiple />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="">
+                <input type="submit" value="Upload" />
+            </div>
+        </div>
+    </form>
+</div>
