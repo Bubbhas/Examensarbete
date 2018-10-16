@@ -1,0 +1,24 @@
+﻿@model GameOfDojan.ViewModels.Rootobject
+
+
+<h1>Är det en konsultdoja eller ej?</h1>
+@foreach (var item in Model.Predictions)
+{
+
+    @if (item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
+    {
+        <p>Det är en konsultdoja</p>
+        <p>Med @Math.Round(@item.Probability * 100, 3)%</p>
+
+    }
+    @if (item.TagName == "konsultdoja" && item.Probability < 0.7 || item.Probability > 1)
+    {
+        <p>Det är inte en konsultdoja</p>
+        <p>Med @Math.Round(@item.Probability * 100, 3)%</p>
+    }
+
+}
+
+
+
+

@@ -35,9 +35,9 @@ namespace GameOfDojan.Controllers
                 filePath = await _shoePicService.AddPicToFolder(files);
              
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                return BadRequest("Filerna måste vara jpg eller png" + e.Message);
+                return BadRequest("Filerna måste vara jpg eller png");
             }
 
            var svar = await _aiService.MakePredictionRequest(filePath);

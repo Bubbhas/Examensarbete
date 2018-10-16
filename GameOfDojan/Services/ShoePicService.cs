@@ -34,11 +34,11 @@ namespace GameOfDojan.Services
             string newFilePath = "";
             if (formFile.FileName.ToLower().EndsWith(".jpg"))
             {
-                newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.jpg";
+                newFilePath = $@"wwwroot\Pics\{randomFileName}.jpg";
             }
             else if (formFile.FileName.ToLower().EndsWith(".png"))
             {
-             newFilePath = $@"C:\Users\Administrator\Desktop\examen\GameOfDojan\wwwroot\Pics\{randomFileName}.png";
+             newFilePath = $@"wwwroot\Pics\{randomFileName}.png";
             }
             else
             {
