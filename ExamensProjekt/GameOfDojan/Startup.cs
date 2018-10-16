@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using GameOfDojan.Services;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Rewrite;
+using GameOfDojan.Models;
 
 namespace GameOfDojan
 {
@@ -58,7 +59,7 @@ namespace GameOfDojan
 
             services.AddTransient<IShoePicService, ShoePicService>();
             services.AddTransient<IAiService, AiService>();
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<GameOfDojanDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

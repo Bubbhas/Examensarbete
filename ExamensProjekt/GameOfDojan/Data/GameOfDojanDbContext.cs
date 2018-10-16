@@ -16,5 +16,6 @@ namespace GameOfDojan.Data
 
         public DbSet<ShoePic> ShoePics { get; set; }
 
+
     }
 }
