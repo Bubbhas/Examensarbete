@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using GameOfDojan.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using GameOfDojan.Data;
+using GameOfDojan.Models;
+using GameOfDojan.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using GameOfDojan.Services;
-using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
-using GameOfDojan.Models;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GameOfDojan
 {
@@ -60,10 +55,11 @@ namespace GameOfDojan
             services.AddTransient<IShoePicService, ShoePicService>();
             services.AddTransient<IAiService, AiService>();
             services.AddTransient<UserService, UserService>();
-           services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<GameOfDojanDbContext>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders();
+            services.AddTransient<IShoePicData, ShoePicData>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                 .AddEntityFrameworkStores<GameOfDojanDbContext>()
+                 .AddDefaultUI()
+                 .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -1,10 +1,6 @@
 ﻿using GameOfDojan.Data;
 using GameOfDojan.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameOfDojan.Services
 {
@@ -17,9 +13,10 @@ namespace GameOfDojan.Services
             _context = context;
         }
 
-        public void AddPictureToFolder()
+        public void AddPictureToDatabase(ShoePic pic)
         {
-
+            _context.ShoePics.Add(pic);
+            _context.SaveChanges();
         }
 
         //public ShoePic GetPicFromFolder(int id)

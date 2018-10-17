@@ -9,6 +9,7 @@ namespace GameOfDojan.Services
 {
     public interface IShoePicData
     {
+        void AddPictureToDatabase(ShoePic pic);
         //ShoePic Get(int id);
         //ShoePic GetPicFromFolder(int id);
     }

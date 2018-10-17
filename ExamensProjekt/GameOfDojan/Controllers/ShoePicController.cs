@@ -19,15 +19,15 @@ namespace GameOfDojan.Controllers
     {
         private readonly IShoePicService _shoePicService;
         private readonly IAiService _aiService;
-        private readonly GameOfDojanDbContext _context;
         private readonly UserService _userService;
+        private readonly IShoePicData _shoePicData;
 
-        public ShoePicController(IShoePicService shoePicService, IAiService aiService, GameOfDojanDbContext context, UserService userService)
+        public ShoePicController(IShoePicService shoePicService, IAiService aiService, UserService userService, IShoePicData shoePicData)
         {
             _shoePicService = shoePicService;
             _aiService = aiService;
-            _context = context;
             _userService = userService;
+            _shoePicData = shoePicData;
         }
 
         public IActionResult Index()
@@ -64,16 +64,16 @@ namespace GameOfDojan.Controllers
             {
                 if(item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
                 {
-                    _context.Add(new ShoePic
+
+                    _shoePicData.AddPictureToDatabase(new ShoePic
                     {
-                        Probability = item.Probability,
                         ImageSource = filePath,
                         ApplicationUser = newUser,
+                        Probability = item.Probability
                     });
-
-                    await _context.SaveChangesAsync();
                 }
             }
+            
         }
     }
 }
