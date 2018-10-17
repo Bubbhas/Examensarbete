@@ -60,9 +60,10 @@ namespace GameOfDojan
             services.AddTransient<IShoePicService, ShoePicService>();
             services.AddTransient<IAiService, AiService>();
             services.AddTransient<UserService, UserService>();
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                 .AddEntityFrameworkStores<GameOfDojanDbContext>()
-                 .AddDefaultTokenProviders();
+           services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<GameOfDojanDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
