@@ -23,7 +23,8 @@ namespace GameOfDojan.Services
         public async Task<ApplicationUser> GetUser(string id)
         {
             
-            return await _userManager.FindByIdAsync(id);
+            //return await _userManager.FindByIdAsync(id);
+            return await _userManager.FindByNameAsync(id);
         }
 
     }

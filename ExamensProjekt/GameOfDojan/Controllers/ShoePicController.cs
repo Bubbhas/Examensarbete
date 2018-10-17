@@ -3,6 +3,7 @@ using GameOfDojan.Models;
 using GameOfDojan.Services;
 using GameOfDojan.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -56,17 +57,21 @@ namespace GameOfDojan.Controllers
         private async void UploadPicToDataBase(Rootobject predictionAnswer, string filePath)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            //var user1 = HttpContext.User.
+          
             foreach (var item in predictionAnswer.Predictions)
             {
-                if(item.TagName == "konsultdojan" && item.Probability > 0.7 && item.Probability < 1)
+                if(item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
                 {
                     _context.Add(new ShoePic
                     {
                         Probability = item.Probability,
                         ImageSource = filePath,
-                        ApplicationUser = await _userService.GetUser(userId),
+                        ApplicationUser = await _userService.GetUser(userName),
                     });
+
+                    await _context.SaveChangesAsync();
                 }
             }
         }
