@@ -57,9 +57,9 @@ namespace GameOfDojan.Controllers
         private async void UploadPicToDataBase(Rootobject predictionAnswer, string filePath)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            //var user1 = HttpContext.User.
-          
+            var newUser = await _userService.GetUser(userId);
+
+
             foreach (var item in predictionAnswer.Predictions)
             {
                 if(item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
@@ -68,7 +68,7 @@ namespace GameOfDojan.Controllers
                     {
                         Probability = item.Probability,
                         ImageSource = filePath,
-                        ApplicationUser = await _userService.GetUser(userName),
+                        ApplicationUser = newUser,
                     });
 
                     await _context.SaveChangesAsync();
