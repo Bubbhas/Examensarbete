@@ -35,3 +35,22 @@ body {
         display: none;
     }
 }
+.navbar {
+    background-color: #464647;
+}
+
+.navbar-brand img {
+    max-height: 35px;
+}
+
+.full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+.jumbotron {
+    background-image: url(../images/jumbopic.jpg);
+}
