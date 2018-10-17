@@ -11,7 +11,6 @@ namespace GameOfDojan.Models
         public string Description { get; set; }
 
         public ApplicationUser ApplicationUser{ get; set; }
-        public int ApplicationUserId { get; set; }
 
         public List<Comment> Comments { get; set; }
 
