@@ -12,9 +12,9 @@ namespace GameOfDojan.Services
     public class UserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<ApplicationUser> _roleManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(UserManager<ApplicationUser> userManager, RoleManager<ApplicationUser> roleManager)
+        public UserService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;

@@ -8,6 +8,7 @@ namespace GameOfDojan.Models
         public int Points{ get; set; }
         public ICollection<ShoePic> ShoePicsList { get; set; }
 
+
         public ICollection<Comment> Comments { get; set; }
     }
 }
