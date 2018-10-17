@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameOfDojan.Models
+﻿namespace GameOfDojan.Models
 {
     public class Comment
     {
@@ -13,5 +7,8 @@ namespace GameOfDojan.Models
 
         public int ShoePicId { get; set; }
         public ShoePic ShoePic{ get; set; }
+
+        public int UserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

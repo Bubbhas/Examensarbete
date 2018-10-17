@@ -12,9 +12,11 @@ namespace GameOfDojan.Data
         public GameOfDojanDbContext(DbContextOptions options)
             : base(options)
         {
+            
         }
 
         public DbSet<ShoePic> ShoePics { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
 
     }
