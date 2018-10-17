@@ -1,10 +1,14 @@
-﻿using GameOfDojan.Services;
+﻿using GameOfDojan.Data;
+using GameOfDojan.Models;
+using GameOfDojan.Services;
+using GameOfDojan.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,11 +18,15 @@ namespace GameOfDojan.Controllers
     {
         private readonly IShoePicService _shoePicService;
         private readonly IAiService _aiService;
+        private readonly GameOfDojanDbContext _context;
+        private readonly UserService _userService;
 
-        public ShoePicController(IShoePicService shoePicService, IAiService aiService)
+        public ShoePicController(IShoePicService shoePicService, IAiService aiService, GameOfDojanDbContext context, UserService userService)
         {
             _shoePicService = shoePicService;
             _aiService = aiService;
+            _context = context;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -40,8 +48,27 @@ namespace GameOfDojan.Controllers
                 return BadRequest("Filerna måste vara jpg eller png" + e.Message);
             }
 
-            var svar = await _aiService.MakePredictionRequest(filePath);
-            return View("AiResponse", svar);
+            var PredictionAnswer = await _aiService.MakePredictionRequest(filePath);
+            UploadPicToDataBase(PredictionAnswer, filePath);
+            return View("AiResponse", PredictionAnswer);
+        }
+
+        private async void UploadPicToDataBase(Rootobject predictionAnswer, string filePath)
+        {
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            foreach (var item in predictionAnswer.Predictions)
+            {
+                if(item.TagName == "konsultdojan" && item.Probability > 0.7 && item.Probability < 1)
+                {
+                    _context.Add(new ShoePic
+                    {
+                        Probability = item.Probability,
+                        ImageSource = filePath,
+                        ApplicationUser = await _userService.GetUser(userId),
+                    });
+                }
+            }
         }
     }
 }

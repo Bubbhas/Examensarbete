@@ -1,4 +1,5 @@
 ﻿using GameOfDojan.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,12 @@ namespace GameOfDojan.Services
         {
             _userManager = userManager;
             _roleManager = roleManager;
+        }
+
+        public async Task<ApplicationUser> GetUser(string id)
+        {
+            
+            return await _userManager.FindByIdAsync(id);
         }
 
     }
