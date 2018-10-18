@@ -3,12 +3,15 @@
 
 
 <h1>Game Of Dojan</h1>
+
 <div>
     <form method="post" enctype="multipart/form-data" asp-action="UploadPic">
         <div class="form-group">
             <div class="">
                 <p>Testa din sko:</p>
-                <input type="file" name="files" multiple />
+                <input type="file" id="uploadImage" name="files" class="file_input" multiple />
+                <div id="result" class="uploadPreview">
+                </div>
             </div>
         </div>
         <div class="form-group">
