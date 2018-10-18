@@ -90,7 +90,7 @@ namespace GameOfDojan.Controllers
                         ApplicationUser = newUser,
                         Probability = item.Probability
                     });
-
+                 
                     _userData.AddPointToUser(newUser);
                 }
             }

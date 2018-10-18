@@ -22,13 +22,6 @@ namespace GameOfDojan.Services
 
             _context.SaveChanges();
         }
-
-        //public void AddPointToUser(ApplicationUser newUser)
-        //{
-        //    newUser.Points += 10;
-
-        //    _context.SaveChanges();
-        //}
         
         public ShoePic Get(int id)
         {

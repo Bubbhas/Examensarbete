@@ -17,12 +17,19 @@ namespace GameOfDojan.Services
             _context = context;
         }
 
-
-        public void AddPointToUser(ApplicationUser newUser)
+        public void AddPointToUser(ApplicationUser User)
         {
-            newUser.Points += 10;
+            User.Points += 10;
 
             _context.SaveChanges();
         }
+
+        public List<ApplicationUser> GetTop10UserPoints()
+        {
+            var listOfUsers = new List<ApplicationUser>();
+
+            return listOfUsers;
+        }
+
     }
 }
