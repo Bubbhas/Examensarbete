@@ -50,11 +50,11 @@ namespace GameOfDojan.Controllers
             }
 
             var PredictionAnswer = await _aiService.MakePredictionRequest(filePath);
-            UploadPicToDataBase(PredictionAnswer, filePath);
+            await UploadPicToDataBase(PredictionAnswer, filePath);
             return View("AiResponse", PredictionAnswer);
         }
 
-        private async void UploadPicToDataBase(Rootobject predictionAnswer, string filePath)
+        private async Task UploadPicToDataBase(Rootobject predictionAnswer, string filePath)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var newUser = await _userService.GetUser(userId);
