@@ -32,7 +32,26 @@ namespace GameOfDojan.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (UserIsAuthenticated())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToPage("/Account/LogIn", "", new { area = "Identity" });
+            }
+        }
+
+        private bool UserIsAuthenticated()
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         [HttpPost]
