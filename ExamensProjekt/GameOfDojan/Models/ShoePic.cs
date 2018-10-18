@@ -10,6 +10,7 @@ namespace GameOfDojan.Models
         public double Probability { get; set; }
         public string ImageSource { get; set; }
         public string Description { get; set; }
+        public DateTime Uploaded { get; set; }
 
         public ApplicationUser ApplicationUser{ get; set; }
 

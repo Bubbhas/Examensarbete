@@ -26,9 +26,8 @@ namespace GameOfDojan.Controllers
 
         public IActionResult GetTopList()
         {
-            return View(_userService.GetTop10UserPoints());
+            return Ok(_userService.GetTop10UserPoints());
         }
-
     }
 }
 

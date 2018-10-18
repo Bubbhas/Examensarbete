@@ -63,9 +63,9 @@ namespace GameOfDojan.Controllers
             try
             {
                 filePath = await _shoePicService.AddPicToFolder(files);
-             
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest("Filerna måste vara jpg eller png" + e.Message);
             }
@@ -82,15 +82,16 @@ namespace GameOfDojan.Controllers
 
             foreach (var item in predictionAnswer.Predictions)
             {
-                if(item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
+                if (item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
                 {
                     _shoePicData.AddPictureToDatabase(new ShoePic
                     {
                         ImageSource = filePath,
                         ApplicationUser = newUser,
-                        Probability = item.Probability
+                        Probability = item.Probability,
+                        Uploaded = DateTime.Now
                     });
-                 
+
                     _userData.AddPointToUser(newUser);
                 }
             }
