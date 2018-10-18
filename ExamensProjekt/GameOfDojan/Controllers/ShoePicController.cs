@@ -79,6 +79,7 @@ namespace GameOfDojan.Controllers
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var newUser = await _userService.GetUser(userId);
+            var correctFilePath = filePath.Substring(8);
 
             foreach (var item in predictionAnswer.Predictions)
             {
@@ -86,7 +87,7 @@ namespace GameOfDojan.Controllers
                 {
                     _shoePicData.AddPictureToDatabase(new ShoePic
                     {
-                        ImageSource = filePath,
+                        ImageSource = correctFilePath,
                         ApplicationUser = newUser,
                         Probability = item.Probability,
                         Uploaded = DateTime.Now

@@ -82,3 +82,7 @@ div.desc {
 .jumbotron p {
     color: #FFFAF9;
 }
+.thumbnail-mini {
+    max-height: 100px;
+    width: auto;
+}
