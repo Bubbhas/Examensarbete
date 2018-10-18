@@ -59,21 +59,20 @@ namespace GameOfDojan.Controllers
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var newUser = await _userService.GetUser(userId);
 
-
             foreach (var item in predictionAnswer.Predictions)
             {
                 if(item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
                 {
-
                     _shoePicData.AddPictureToDatabase(new ShoePic
                     {
                         ImageSource = filePath,
                         ApplicationUser = newUser,
                         Probability = item.Probability
                     });
+
+                    _shoePicData.AddPointToUser(newUser);
                 }
             }
-            
         }
     }
 }
