@@ -21,13 +21,15 @@ namespace GameOfDojan.Controllers
         private readonly IAiService _aiService;
         private readonly UserService _userService;
         private readonly IShoePicData _shoePicData;
+        private readonly IUserData _userData;
 
-        public ShoePicController(IShoePicService shoePicService, IAiService aiService, UserService userService, IShoePicData shoePicData)
+        public ShoePicController(IShoePicService shoePicService, IAiService aiService, UserService userService, IShoePicData shoePicData, IUserData userData)
         {
             _shoePicService = shoePicService;
             _aiService = aiService;
             _userService = userService;
             _shoePicData = shoePicData;
+            _userData = userData;
         }
 
         public IActionResult Index()
@@ -89,7 +91,7 @@ namespace GameOfDojan.Controllers
                         Probability = item.Probability
                     });
 
-                    _shoePicData.AddPointToUser(newUser);
+                    _userData.AddPointToUser(newUser);
                 }
             }
         }

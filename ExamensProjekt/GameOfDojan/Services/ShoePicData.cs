@@ -1,6 +1,7 @@
 ﻿using GameOfDojan.Data;
 using GameOfDojan.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,13 +23,13 @@ namespace GameOfDojan.Services
             _context.SaveChanges();
         }
 
-        public void AddPointToUser(ApplicationUser newUser)
-        {
-            newUser.Points += 10;
+        //public void AddPointToUser(ApplicationUser newUser)
+        //{
+        //    newUser.Points += 10;
 
-            _context.SaveChanges();
-        }
-
+        //    _context.SaveChanges();
+        //}
+        
         public ShoePic Get(int id)
         {
             return _context.ShoePics.FirstOrDefault(p => p.Id == id);
