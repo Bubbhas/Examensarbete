@@ -38,7 +38,7 @@ namespace GameOfDojan.Services
             }
             else if (formFile.FileName.ToLower().EndsWith(".png"))
             {
-             newFilePath = $@"wwwroot\Pics\{randomFileName}.jpg";
+             newFilePath = $@"wwwroot\Pics\{randomFileName}.png";
             }
             else
             {

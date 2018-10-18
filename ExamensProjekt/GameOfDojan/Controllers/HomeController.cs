@@ -20,7 +20,7 @@ namespace GameOfDojan.Controllers
 
         public IActionResult Index()
         {
-            return View(GetTopList());
+            return View();
         }
         public IActionResult GetTopList()
         {

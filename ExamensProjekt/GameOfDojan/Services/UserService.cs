@@ -25,13 +25,13 @@ namespace GameOfDojan.Services
             return await _userManager.FindByIdAsync(id);
         }
 
-        public  IEnumerable<ApplicationUser> GetTop10UserPoints()
+        public IEnumerable<ApplicationUser> GetTop10UserPoints()
         {
             IEnumerable<ApplicationUser> listOfUsersNames = _userManager.Users.ToList();
 
             IEnumerable<ApplicationUser> topUsersPoints = listOfUsersNames.OrderBy(x => x.Points).Take(10);
 
-            return topUsersPoints;
+            return  topUsersPoints;
         }
 
     }
