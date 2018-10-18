@@ -22,10 +22,10 @@ namespace GameOfDojan.Controllers
 
         public IActionResult Index()
         {
-            var vm = new TopList
+            var vm = new HomePage
             {
                 User = _userService.GetTop10UserPoints(),
-                ShoePic = _shoePicData.GetAllShoePics()
+                ShoePic = _shoePicData.GetAllShoePicsFromLast7Days()
             };
 
             return View(vm);

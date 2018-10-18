@@ -1,4 +1,4 @@
-﻿@model GameOfDojan.Models.TopList
+﻿@model GameOfDojan.Models.HomePage
 
 
 
@@ -49,6 +49,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             @foreach (var item in Model.ShoePic)
                             {
+                                <img src="@item.ImageSource" />
                                 <p> @item.ImageSource</p>
 
                             }

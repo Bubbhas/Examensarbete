@@ -28,9 +28,11 @@ namespace GameOfDojan.Services
             return _context.ShoePics.FirstOrDefault(p => p.Id == id);
         }
 
-        public IEnumerable<ShoePic> GetAllShoePics()
+        public IEnumerable<ShoePic> GetAllShoePicsFromLast7Days()
         {
-            return  _context.ShoePics.ToList();
+            return _context.ShoePics.Where(x => x.Uploaded > DateTime.Today.AddDays(-7)).ToList();
+ 
+            //return  _context.ShoePics.ToList();
         }
     }
 }

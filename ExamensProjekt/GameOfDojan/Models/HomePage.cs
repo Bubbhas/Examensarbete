@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameOfDojan.Models
 {
-    public class TopList 
+    public class HomePage 
     {
         //public int Id { get; set; }
 
