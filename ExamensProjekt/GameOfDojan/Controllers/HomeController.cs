@@ -12,20 +12,33 @@ namespace GameOfDojan.Controllers
     public class HomeController : Controller
     {
         private readonly UserService _userService;
+        private readonly IShoePicData _shoePicData;
 
-        public HomeController(UserService userService)
+        public HomeController(UserService userService, IShoePicData shoePicData)
         {
             _userService = userService;
+            _shoePicData = shoePicData;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var vm = new TopList
+            {
+                User = _userService.GetTop10UserPoints(),
+                ShoePic = _shoePicData.GetAllShoePics()
+            };
+
+            return View(vm);
         }
-        public IActionResult GetTopList()
-        {
-            return Ok(_userService.GetTop10UserPoints());
-        }
+        //public IActionResult GetTopList()
+        //{
+        //    return Ok(_userService.GetTop10UserPoints());
+        //}
+        //public async Task<IActionResult> GetAllPics()
+        //{
+
+        //    return Ok();
+        //}
 
         public IActionResult About()
         {

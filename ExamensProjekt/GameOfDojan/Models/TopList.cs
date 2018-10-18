@@ -11,9 +11,10 @@ namespace GameOfDojan.Models
     public class TopList 
     {
         //public int Id { get; set; }
-        public int Points { get; set; }
+
+        public IEnumerable<ApplicationUser> User { get; set; }
         //public string UserName { get; set; }
 
-
+        public IEnumerable<ShoePic> ShoePic { get; set; }
     }
 }

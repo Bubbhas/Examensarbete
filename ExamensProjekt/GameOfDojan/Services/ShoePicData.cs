@@ -27,5 +27,10 @@ namespace GameOfDojan.Services
         {
             return _context.ShoePics.FirstOrDefault(p => p.Id == id);
         }
+
+        public IEnumerable<ShoePic> GetAllShoePics()
+        {
+            return  _context.ShoePics.ToList();
+        }
     }
 }
