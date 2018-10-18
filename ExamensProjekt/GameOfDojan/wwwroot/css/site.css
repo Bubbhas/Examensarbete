@@ -77,5 +77,8 @@ div.desc {
 }
 .thumbnail {
     max-height: 200px;
-    max-width: auto;
+    width: auto;
+}
+.jumbotron p {
+    color: #FFFAF9;
 }
