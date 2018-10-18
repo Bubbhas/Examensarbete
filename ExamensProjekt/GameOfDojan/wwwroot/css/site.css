@@ -35,6 +35,7 @@ body {
         display: none;
     }
 }
+
 .navbar {
     background-color: #464647;
 }
@@ -51,6 +52,7 @@ body {
     margin-left: -50vw;
     margin-right: -50vw;
 }
+
 .jumbotron {
     background-image: url(../images/jumbopic.jpg);
 }

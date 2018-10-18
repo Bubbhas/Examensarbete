@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace GameOfDojan
 {
@@ -48,6 +51,7 @@ namespace GameOfDojan
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddScoped<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IHttpService, HttpService>();
             services.AddDbContext<GameOfDojanDbContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("GameOfDojan")));
@@ -57,12 +61,32 @@ namespace GameOfDojan
             services.AddTransient<UserService, UserService>();
             services.AddTransient<IShoePicData, ShoePicData>();
             services.AddTransient<IUserData, UserData>();
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddIdentity<ApplicationUser, IdentityRole>()
                  .AddEntityFrameworkStores<GameOfDojanDbContext>()
-                 .AddDefaultUI()
+                 //.AddDefaultUI() DENNA ÄR DÅLIG
                  .AddDefaultTokenProviders();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                  .AddRazorPagesOptions(options =>
+                  {
+                      options.AllowAreas = true;
+                      options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+                      options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+                  });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+            services.AddHttpContextAccessor();
+
+            //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            services.TryAddSingleton<IEmailSender, EmailSender>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
