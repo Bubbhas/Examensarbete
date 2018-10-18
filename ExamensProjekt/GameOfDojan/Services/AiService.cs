@@ -1,6 +1,5 @@
 ﻿using GameOfDojan.ViewModels;
 using Newtonsoft.Json;
-using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -39,10 +38,10 @@ namespace GameOfDojan.Services
 
                 //Här ska den returnera JSON-fil istället
                 //var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(response);
-               // string json = JsonConvert.SerializeObject(response);
+                //string json = JsonConvert.SerializeObject(response);
 
-                
-                string result =  await response.Content.ReadAsStringAsync();
+
+                string result = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<Rootobject>(result);
             }
         }
