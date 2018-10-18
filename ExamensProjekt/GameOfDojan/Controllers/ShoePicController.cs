@@ -93,6 +93,7 @@ namespace GameOfDojan.Controllers
                     });
 
                     _userData.AddPointToUser(newUser);
+
                 }
             }
         }
