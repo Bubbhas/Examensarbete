@@ -1,10 +1,7 @@
 ﻿using GameOfDojan.Data;
 using GameOfDojan.Models;
-using System;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameOfDojan.Services
 {
@@ -23,6 +20,12 @@ namespace GameOfDojan.Services
             newUser.Points += 10;
 
             _context.SaveChanges();
+        }
+
+        public ApplicationUser GetUser(string id)
+        {
+            var user = _context.ApplicationUsers.Include(x => x.ShoePicsList).FirstOrDefault(x => x.Id == id);
+            return user;
         }
     }
 }

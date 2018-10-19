@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GameOfDojan.Data
 {
-    public class GameOfDojanDbContext : IdentityDbContext
+    public class GameOfDojanDbContext : IdentityDbContext<ApplicationUser>
     {
-        public GameOfDojanDbContext(DbContextOptions options)
+        public GameOfDojanDbContext(DbContextOptions<GameOfDojanDbContext> options)
             : base(options)
         {
             
@@ -17,6 +17,7 @@ namespace GameOfDojan.Data
 
         public DbSet<ShoePic> ShoePics { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
     }
