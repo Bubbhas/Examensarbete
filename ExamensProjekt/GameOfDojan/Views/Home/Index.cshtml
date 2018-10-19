@@ -27,7 +27,7 @@
                             <p class="card-text"><b>Topplista</b><br /></p>
                             @foreach (var item in Model.User)
                             {
-                                <p>@item.UserName med @item.Points poäng</p>
+                                <a asp-controller="UserProfile" asp-route-id="@item.Id">@item.UserName med @item.Points poäng</a><p></p>
                             }
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
