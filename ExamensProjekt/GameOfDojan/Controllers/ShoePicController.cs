@@ -70,7 +70,17 @@ namespace GameOfDojan.Controllers
                 return BadRequest("Filerna måste vara jpg eller png" + e.Message);
             }
 
-            var PredictionAnswer = await _aiService.MakePredictionRequest(filePath);
+            var PredictionAnswer = new Rootobject
+            {
+                Predictions = new Prediction[]{
+                    new Prediction()
+                    {
+                        Probability = 0.8F,
+                        TagName = "konsultdoja"
+                    }
+                }
+            };
+                //await _aiService.MakePredictionRequest(filePath);
             await UploadPicToDataBase(PredictionAnswer, filePath);
             return View("AiResponse", PredictionAnswer);
         }
