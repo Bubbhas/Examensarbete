@@ -28,11 +28,6 @@ namespace GameOfDojan.Controllers
             return View(newUser);
         }
 
-        public IActionResult GetUserByUserName(string userName)
-        {
-            var user = _userData.GetUserByUserName(userName);
 
-            return View(User);
-        }
     }
 }

@@ -9,7 +9,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <div class="form-inline">
-                    <form asp-action="GetUserByUserName" asp-controller="User">
+                    <form asp-action="GetUserByUserName" asp-controller="UserProfile" >
                         <input type="text" class="form-control typeahead border-primary" name="query" id="query" placeholder="Search..." data-provide="typeahead" autocomplete="off">
                         <button type="submit">
                             Ok
@@ -31,7 +31,7 @@ else
     <ul class="nav navbar-nav navbar-right">
         <li>
             <div class="form-inline">
-                <form asp-action="GetUserByUserName" asp-controller="User">
+                <form asp-action="GetUserByUserName" asp-controller="UserProfile">
                     <input type="text" class="form-control typeahead border-primary" name="query" id="query" placeholder="Search..." data-provide="typeahead" autocomplete="off">
                     <button type="submit">
                         Ok
