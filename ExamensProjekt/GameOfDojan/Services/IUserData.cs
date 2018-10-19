@@ -1,4 +1,5 @@
-﻿using GameOfDojan.Models;
+﻿using System.Threading.Tasks;
+using GameOfDojan.Models;
 
 namespace GameOfDojan.Services
 {
@@ -6,5 +7,6 @@ namespace GameOfDojan.Services
     {
         void AddPointToUser(ApplicationUser newUser);
         ApplicationUser GetUser(string id);
+        ApplicationUser GetUserByUserName(string userName);
     }
 }

@@ -12,10 +12,12 @@ namespace GameOfDojan.Controllers
     public class UserController : Controller
     {
         private readonly UserService _userService;
+        private readonly IUserData _userData;
 
-        public UserController(UserService userService)
+        public UserController(UserService userService, IUserData userData)
         {
             _userService = userService;
+            _userData = userData;
         }
 
         public async Task<IActionResult> Index()
@@ -24,6 +26,13 @@ namespace GameOfDojan.Controllers
             var newUser = await _userService.GetUser(userId);
 
             return View(newUser);
+        }
+
+        public IActionResult GetUserByUserName(string userName)
+        {
+            var user = _userData.GetUserByUserName(userName);
+
+            return View(User);
         }
     }
 }
