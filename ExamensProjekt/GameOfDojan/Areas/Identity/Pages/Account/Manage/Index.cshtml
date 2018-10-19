@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Profile";
+    ViewData["Title"] = "Manage";
 }
 
 <h4>@ViewData["Title"]</h4>
@@ -37,17 +37,6 @@
             </div>
             <button type="submit" class="btn btn-default">Save</button>
         </form>
-    </div>
-
-    <div>
-        @foreach (var item in Model.Input.ShoePicList)
-        {
-            <div class="gallery">
-                <a asp-area="" asp-action="">
-                    <img src="@item.ImageSource" />
-                </a>
-            </div>
-        }
     </div>
 </div>
 
