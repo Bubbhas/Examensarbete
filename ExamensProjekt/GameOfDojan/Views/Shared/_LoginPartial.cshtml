@@ -8,6 +8,16 @@
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
+                <div class="form-inline">
+                    <form asp-action="GetUserByUserName" asp-controller="User">
+                        <input type="text" class="form-control typeahead border-primary" name="query" id="query" placeholder="Search..." data-provide="typeahead" autocomplete="off">
+                        <button type="submit">
+                            Ok
+                        </button>
+                    </form>
+                </div>
+            </li>
+            <li>
                 <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
@@ -19,6 +29,16 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            <div class="form-inline">
+                <form asp-action="GetUserByUserName" asp-controller="User">
+                    <input type="text" class="form-control typeahead border-primary" name="query" id="query" placeholder="Search..." data-provide="typeahead" autocomplete="off">
+                    <button type="submit">
+                        Ok
+                    </button>
+                </form>
+            </div>
+        </li>
         <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
         <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
     </ul>
