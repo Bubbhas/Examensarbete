@@ -25,7 +25,15 @@ namespace GameOfDojan.Controllers
 
         public IActionResult GetUserByUserName(string userName)
         {
-            var user = _userData.GetUserByUserName(userName).Id;
+            var user = "";
+            try
+            {
+                user = _userData.GetUserByUserName(userName).Id;
+            }
+            catch (Exception)
+            {
+                return View("UserNotFound");
+            }
 
            return RedirectToAction("Index", "UserProfile", new { id = user });
         }
