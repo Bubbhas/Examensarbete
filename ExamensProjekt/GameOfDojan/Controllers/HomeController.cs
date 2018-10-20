@@ -13,11 +13,13 @@ namespace GameOfDojan.Controllers
     {
         private readonly UserService _userService;
         private readonly IShoePicData _shoePicData;
+        private readonly IUserData _userData;
 
-        public HomeController(UserService userService, IShoePicData shoePicData)
+        public HomeController(UserService userService, IShoePicData shoePicData, IUserData userData)
         {
             _userService = userService;
             _shoePicData = shoePicData;
+            _userData = userData;
         }
 
         public IActionResult Index()
@@ -63,6 +65,14 @@ namespace GameOfDojan.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        [HttpGet("GetAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            var allUsers = _userData.GetAllUsers();
+
+            return Ok(allUsers);
+
         }
     }
 }

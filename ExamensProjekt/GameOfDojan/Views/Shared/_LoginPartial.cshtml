@@ -8,10 +8,10 @@
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <div class="form-inline">
-                    <form asp-action="GetUserByUserName" asp-controller="UserProfile" >
+                <div class="autocomplete form-inline">
+                    <form asp-action="GetUserByUserName" asp-controller="UserProfile"  autocomplete="off">
                         <input type="text" class="form-control typeahead border-primary" name="UserName" id="query" placeholder="Search..." data-provide="typeahead" autocomplete="off">
-                        <button type="submit">
+                        <button type="submit" class="btn-md">
                             Ok
                         </button>
                     </form>
@@ -25,15 +25,16 @@
             </li>
         </ul>
     </form>
+
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <div class="form-inline">
-                <form asp-action="GetUserByUserName" asp-controller="UserProfile">
+            <div class="autocomplete form-inline">
+                <form asp-action="GetUserByUserName" asp-controller="UserProfile" autocomplete="off">
                     <input type="text" class="form-control typeahead border-primary" name="UserName" id="query" placeholder="Search..." data-provide="typeahead" autocomplete="off">
-                    <button type="submit">
+                    <button type="submit" class="btn-md">
                         Ok
                     </button>
                 </form>

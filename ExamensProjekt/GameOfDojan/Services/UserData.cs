@@ -38,5 +38,10 @@ namespace GameOfDojan.Services
             return _context.ApplicationUsers.FirstOrDefault(x => x.UserName == userName);
 
         }
+
+        public IEnumerable<ApplicationUser> GetAllUsers()
+        {
+            return _context.ApplicationUsers.ToArray();
+        }
     }
 }
