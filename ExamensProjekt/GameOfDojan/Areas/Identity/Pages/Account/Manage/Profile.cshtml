@@ -21,14 +21,17 @@
             </div>
             <div>
                 <label asp-for="CurrentUser.ShoePicsList">@Model.CurrentUser.UserName's bilder</label>
+                </div>
+            <div>
                 @foreach (var item in Model.CurrentUser.ShoePicsList)
                 {
                     <div class="gallery">
                         <a asp-area="" asp-action="">
-                            <img src="@item.ImageSource" />
+                            <img src="~/@item.ImageSource" />
                         </a>
                     </div>
                 }
             </div>
         </form>
+    </div>
     </div>

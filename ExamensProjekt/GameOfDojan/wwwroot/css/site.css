@@ -122,3 +122,9 @@ div.desc {
     background-color: DodgerBlue !important;
     color: #ffffff;
 }
+
+.small {
+    max-height: 400px;
+}
+
+

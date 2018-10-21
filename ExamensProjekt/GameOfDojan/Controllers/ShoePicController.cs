@@ -107,5 +107,13 @@ namespace GameOfDojan.Controllers
                 }
             }
         }
+
+        public IActionResult ShoePicWithComments(int id)
+        {
+            var shoePic = _shoePicData.GetShoePicWithComments(id);
+            
+
+            return View("ShoePicAndComments", shoePic);
+        }
     }
 }

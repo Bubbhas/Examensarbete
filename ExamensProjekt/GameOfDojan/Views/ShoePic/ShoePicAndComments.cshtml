@@ -1,0 +1,56 @@
+﻿@model ShoePic
+
+@{
+    ViewData["Title"] = "ShoePicAndComments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>
+        @if (Model.Name != null)
+        {
+            @Model.Name
+
+        }
+    </h2>
+
+
+        <img class="small" src="~/@Model.ImageSource" />
+
+
+    </div>
+
+@if (Model.Comments != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="page-header">
+                    <h1><small class="pull-right">@Model.Comments.Count() kommentarer</small> Kommentarer </h1>
+                </div>
+                <div class="comments-list">
+                    @foreach (var item in Model.Comments)
+                    {
+
+
+                        <div class="media">
+                            <p class="pull-right"><small>Tidpunkt?</small></p>
+                            <a class="media-left" href="#">
+                                @*<img src="">   profilbild?*@
+                            </a>
+                            <div class="media-body">
+
+                                <h4 class="media-heading user_name">@item.ApplicationUser.UserName</h4>
+                                <p>@item.Text</p>
+
+
+                                <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

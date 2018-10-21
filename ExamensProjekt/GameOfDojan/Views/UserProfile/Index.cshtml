@@ -1,18 +1,23 @@
 ﻿@model GameOfDojan.Models.ApplicationUser
 
-<h3>Profilsida</h3>
 
-<div>
-    <h4>Användarens bilder</h4>
-    <p>@Model.UserName  har @Model.Points poäng!</p>
+
+<div class="container">
+    <h3>Profilsida</h3>
+
     <div>
-        @foreach (var item in Model.ShoePicsList)
-        {
-            <div class="gallery">
-                <a asp-area="" asp-action="">
-                    <img src="~/@item.ImageSource" />
-                </a>
-            </div>
-        }
+        <h4>Användarens bilder</h4>
+        <p>@Model.UserName  har @Model.Points poäng!</p>
+        <div>
+            @foreach (var item in Model.ShoePicsList)
+            {
+                <div class="gallery">
+                    <a asp-controller="ShoePic" asp-action="ShoePicWithComments" asp-route-id="@item.Id">
+
+                        <img src="~/@item.ImageSource" />
+                    </a>
+                </div>
+            }
+        </div>
     </div>
 </div>

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace GameOfDojan.Services
 {
@@ -23,9 +25,12 @@ namespace GameOfDojan.Services
             _context.SaveChanges();
         }
         
-        public ShoePic Get(int id)
+        public ShoePic GetShoePicWithComments(int id)
         {
-            return _context.ShoePics.FirstOrDefault(p => p.Id == id);
+            var shoePic = _context.ShoePics.Include(x => x.Comments).Include(x => x.ApplicationUser).FirstOrDefault(p => p.Id == id);
+            shoePic.Comments = _context.Comments.Where((x => x.Id == id)).ToList();
+
+            return shoePic;
         }
 
         public IEnumerable<ShoePic> GetAllShoePicsFromLast7Days()

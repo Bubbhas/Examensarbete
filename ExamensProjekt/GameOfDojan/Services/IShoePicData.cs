@@ -11,7 +11,7 @@ namespace GameOfDojan.Services
     {
         void AddPictureToDatabase(ShoePic pic);
        IEnumerable<ShoePic> GetAllShoePicsFromLast7Days();
-        //ShoePic Get(int id);
+       ShoePic GetShoePicWithComments(int id);
         //ShoePic GetPicFromFolder(int id);
     }
 }
