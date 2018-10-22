@@ -1,6 +1,10 @@
 ﻿@model ShoePic
 
-
+<script>
+    window.onload = function () {
+        previewImage();
+    };
+</script>
 
 <h1>Game Of Dojan</h1>
 
@@ -14,7 +18,7 @@
                     <b>Testa din sko</b><br />
                     Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 4mb.
                 </p>
-                <input onchange="return ValidateUploadType()" type="file" accept="image/*" id="uploadImage" name="files" class="file_input" multiple />
+                <input onchange="ValidateUploadType()" type="file" accept="image/*" id="uploadImage" name="files" class="file_input" multiple />
                 <div id="errorMsg" class="text-danger">
 
                 </div>

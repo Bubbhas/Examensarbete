@@ -2,7 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-window.onload = function () {
+function previewImage() {
     if (window.File && window.FileList && window.FileReader) {
         let filesInput = document.getElementById("uploadImage");
         filesInput.addEventListener("change", function (event) {
@@ -25,7 +25,7 @@ window.onload = function () {
 
         });
     }
-}
+};
 
 async function getAllUsers() {
     let response = await fetch("/GetAllUsers");
@@ -36,7 +36,6 @@ async function getAllUsers() {
 
         for (let x of userArray) {
             userNames.push(x.userName)
-            console.log(x.userName);
         }
         return userNames;
     } else {
