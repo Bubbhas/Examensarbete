@@ -53,6 +53,7 @@ body {
 }
 .jumbotron {
     background-image: url(../images/jumbopic.jpg);
+    opacity: 0.75;
 }
 
 div.gallery {

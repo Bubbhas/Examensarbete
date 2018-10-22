@@ -11,7 +11,10 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <img class="logo_text" src="~/Logo/biggerlogotext.png" />
-            <p class="lead"></p>
+            <div class="text-center">
+                <p>Fota en konsultdoja och börja samla dina poäng redan idag!</p>
+                <button type="button" class="btn btn-secondary btn-lg" >Ladda upp bild</button>
+            </div>
         </div>
     </div>
 </figure>
@@ -26,7 +29,7 @@
                         <div class="card-body">
                             <p class="card-text"><b>Topplista</b><br /></p>
                             @{ int toplistnumber = 1;}
-                            @foreach (var item in Model.User.OrderByDescending(x=>x.Points))
+                            @foreach (var item in Model.User.OrderByDescending(x => x.Points))
                             {
 
                                 <a asp-controller="UserProfile" asp-route-id="@item.Id">@toplistnumber: @item.UserName med @item.Points poäng</a><p></p>
