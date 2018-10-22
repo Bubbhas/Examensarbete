@@ -99,7 +99,6 @@ namespace GameOfDojan.Controllers
             {
                 ImageSource = filePath.Substring(8),
                 ApplicationUser = newUser,
-                Probability = 0,
                 Uploaded = DateTime.Now
             };
 
