@@ -148,3 +148,15 @@ getAllUsers().then((result) => {
 });
 
 
+function ValidateUploadType() {
+    let imageSource = document.getElementById("uploadImage").value;
+    
+    if (!imageSource.endsWith(".jpg") && !imageSource.endsWith(".png")) {
+        document.getElementById("errorMsg").innerHTML = "<p>Filen måste vara .jpg eller .png</p>";
+    }
+    else {
+        document.getElementById("errorMsg").innerHTML = "";
+    }
+}
+
+

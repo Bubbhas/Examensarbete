@@ -7,11 +7,18 @@
 <div>
     <form method="post" enctype="multipart/form-data" asp-action="UploadPic">
         <div class="form-group">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="">
-                <p><b>Testa din sko</b><br />
-                Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 4mb.
+                <p>
+                    <b>Testa din sko</b><br />
+                    Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 4mb.
                 </p>
-                <input type="file" id="uploadImage" name="files" class="file_input" multiple />
+                <input onchange="return ValidateUploadType()" type="file" accept="image/*" id="uploadImage" name="files" class="file_input" multiple />
+                <div id="errorMsg" class="text-danger">
+
+                </div>
+                <span asp-validation-for="ImageSource" class="text-danger"></span>
                 <div id="result" class="uploadPreview">
                 </div>
             </div>
