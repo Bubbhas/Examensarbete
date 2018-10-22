@@ -123,10 +123,11 @@ namespace GameOfDojan.Controllers
         [HttpPost("AddComment")]
         public IActionResult AddCommentToShoePic(string text, int shoePicId)
         {
+            var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
             var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             //var currentUser = _userData.GetUser(currentUserId);
             _commentData.AddComment(text, shoePicId, currentUserId);
-            return View("ShoePicAndComent");
+            return View("ShoePicAndComments", shoePic);
         }
     }
 }
