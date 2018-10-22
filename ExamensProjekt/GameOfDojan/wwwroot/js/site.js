@@ -148,3 +148,14 @@ getAllUsers().then((result) => {
 });
 
 
+$(document).ready(function () {
+
+    $('#query').keydown(function (event) {
+        // enter has keyCode = 13, change it if you want to use another button
+        if (event.keyCode == 13) {
+            this.form.submit();
+            return false;
+        }
+    });
+
+});
