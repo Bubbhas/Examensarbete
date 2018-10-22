@@ -85,31 +85,45 @@ namespace GameOfDojan.Controllers
                 }
             };*/
 
-            await UploadPicToDataBase(PredictionAnswer, filePath);
-            return View("AiResponse", PredictionAnswer);
+            var shoePic = await CreateShoePic(PredictionAnswer, filePath);
+            UploadPicToDataBase(shoePic);
+            return View("AiResponse", shoePic);
         }
 
-        private async Task UploadPicToDataBase(Rootobject predictionAnswer, string filePath)
+        private async Task<ShoePic> CreateShoePic(Rootobject predictionAnswer, string filePath)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var newUser = await _userService.GetUser(userId);
 
+            var shoePic = new ShoePic
+            {
+                ImageSource = filePath.Substring(8),
+                ApplicationUser = newUser,
+                Probability = 0,
+                Uploaded = DateTime.Now
+            };
+
             foreach (var item in predictionAnswer.Predictions)
             {
-                if (item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
+                if (item.TagName == "konsultdoja")
                 {
-                    _shoePicData.AddPictureToDatabase(new ShoePic
-                    {
-                        ImageSource = filePath.Substring(8),
-                        ApplicationUser = newUser,
-                        Probability = item.Probability,
-                        Uploaded = DateTime.Now
-                    });
-
-                    _userData.AddPointToUser(newUser);
-
+                    shoePic.Probability = item.Probability;
                 }
             }
+            return shoePic;
+
+        }
+
+        private void UploadPicToDataBase(ShoePic shoePic)
+        {
+            if (shoePic.Probability > 0.7 && shoePic.Probability < 1)
+            {
+                _shoePicData.AddPictureToDatabase(shoePic);
+
+                _userData.AddPointToUser(shoePic.ApplicationUser);
+
+            }
+
         }
 
         public IActionResult ShoePicWithComments(int id)

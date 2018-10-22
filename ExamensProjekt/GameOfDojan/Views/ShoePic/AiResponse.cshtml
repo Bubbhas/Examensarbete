@@ -1,23 +1,19 @@
-﻿@model GameOfDojan.ViewModels.Rootobject
+﻿@model ShoePic
 
 
 
-@foreach (var item in Model.Predictions)
-{
-
-    @if (item.TagName == "konsultdoja" && item.Probability > 0.7 && item.Probability < 1)
+    @if (Model.Probability > 0.7 && Model.Probability < 1)
     {
         <h1>Detta är en konsultdoja</h1>
-        <p>Med @Math.Round(@item.Probability * 100, 3)%</p>
+        <p>Med @Math.Round(@Model.Probability * 100, 3)%</p>
 
-    }
-    @if (item.TagName == "konsultdoja" && item.Probability < 0.7 || item.Probability > 1)
+        <img class="small" src="~/@Model.ImageSource" />
+    }else
     {
         <h1>Tyvärr, detta är inte en konsultdoja</h1>
         @*<p>Med @Math.Round(@item.Probability * 100, 3)%</p>*@
     }
 
-}
 
 
 
