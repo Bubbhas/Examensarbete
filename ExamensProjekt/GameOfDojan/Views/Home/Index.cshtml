@@ -25,15 +25,14 @@
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
                             <p class="card-text"><b>Topplista</b><br /></p>
-                            @foreach (var item in Model.User)
+                            @{ int toplistnumber = 1;}
+                            @foreach (var item in Model.User.OrderByDescending(x=>x.Points))
                             {
-                                <a asp-controller="UserProfile" asp-route-id="@item.Id">@item.UserName med @item.Points poäng</a><p></p>
+
+                                <a asp-controller="UserProfile" asp-route-id="@item.Id">@toplistnumber: @item.UserName med @item.Points poäng</a><p></p>
+                                toplistnumber++;
                             }
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="ChangePageToOmOss()">Gå dit</button>
-
-                                </div>
 
                             </div>
                         </div>
@@ -60,19 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-body">
-                            <p class="card-text"><b>Trams</b><br /></p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="ChangePage()">Gå dit</button>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
