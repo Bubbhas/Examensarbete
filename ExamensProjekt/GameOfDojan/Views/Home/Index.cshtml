@@ -7,13 +7,14 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <figure class="full-width">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <img class="logo_text" src="~/Logo/biggerlogotext.png" />
+            <img class="img-responsive" src="~/Logo/biggerlogotext.png" />
             <div class="text-center">
                 <p>Fota en konsultdoja och börja samla dina poäng redan idag!</p>
-                <button onclick="location.href='@Url.Action("Index", "ShoePic")'" type="button" class="btn btn-secondary btn-lg">Ladda upp bild</button>
+                <a class="btn btn-theme btn-sm btn-min-block" onclick="location.href='@Url.Action("Index", "ShoePic")'">Ladda upp bild</a>
             </div>
         </div>
     </div>
@@ -29,10 +30,10 @@
                         <div class="card-body">
                             <h2 class="card-text"><b>Topplista</b><br /></h2>
                             @{ int toplistnumber = 1;}
-                            <table class="table" >
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" >#</th>
+                                        <th class="text-center">#</th>
                                         <th class="text-center">Användarnamn</th>
                                         <th class="text-center">Poäng</th>
                                     </tr>
