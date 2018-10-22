@@ -50,13 +50,13 @@
                     @foreach (var item in Model.Comments)
                     {
                         <div class="media">
-                            <p class="pull-right"><small>Tidpunkt?</small></p>
+                            <p class="pull-right"><small>@item.CreateDate.ToShortDateString()</small></p>
                             <a class="media-left" href="#">
                                 @*<img src="">   profilbild?*@
                             </a>
                             <div class="media-body">
 
-                               @* <h4 class="media-heading user_name">@item.ApplicationUser.UserName</h4>*@
+                                <h4 class="media-heading user_name">@item.ApplicationUser.UserName</h4>
                                 <p>@item.Text</p>
 
 
