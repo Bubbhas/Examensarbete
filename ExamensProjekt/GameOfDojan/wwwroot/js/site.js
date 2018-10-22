@@ -28,7 +28,7 @@ window.onload = function () {
 }
 
 async function getAllUsers() {
-    let response = await fetch("GetAllUsers");
+    let response = await fetch("/GetAllUsers");
 
     if (response.status === 200) {
         let userArray = await response.json();
