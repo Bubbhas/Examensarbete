@@ -57,6 +57,7 @@ namespace GameOfDojan
             services.AddTransient<UserService, UserService>();
             services.AddTransient<IShoePicData, ShoePicData>();
             services.AddTransient<IUserData, UserData>();
+            services.AddTransient<ICommentData, CommentData>();
             services.AddIdentity<ApplicationUser, IdentityRole>()
                  .AddEntityFrameworkStores<GameOfDojanDbContext>()
                  .AddDefaultUI()

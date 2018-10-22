@@ -1,16 +1,11 @@
-﻿using GameOfDojan.Data;
-using GameOfDojan.Models;
+﻿using GameOfDojan.Models;
 using GameOfDojan.Services;
 using GameOfDojan.ViewModels;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GameOfDojan.Controllers
@@ -22,14 +17,23 @@ namespace GameOfDojan.Controllers
         private readonly UserService _userService;
         private readonly IShoePicData _shoePicData;
         private readonly IUserData _userData;
+        private readonly ICommentData _commentData;
 
-        public ShoePicController(IShoePicService shoePicService, IAiService aiService, UserService userService, IShoePicData shoePicData, IUserData userData)
+        public ShoePicController(
+            IShoePicService shoePicService,
+            IAiService aiService,
+            UserService userService,
+            IShoePicData shoePicData,
+            IUserData userData,
+            ICommentData commentData
+            )
         {
             _shoePicService = shoePicService;
             _aiService = aiService;
             _userService = userService;
             _shoePicData = shoePicData;
             _userData = userData;
+            _commentData = commentData;
         }
 
         public IActionResult Index()
@@ -111,9 +115,18 @@ namespace GameOfDojan.Controllers
         public IActionResult ShoePicWithComments(int id)
         {
             var shoePic = _shoePicData.GetShoePicWithComments(id);
-            
+
 
             return View("ShoePicAndComments", shoePic);
+        }
+
+        [HttpPost("AddComment")]
+        public IActionResult AddCommentToShoePic(string text, int shoePicId)
+        {
+            var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var currentUser = _userData.GetUser(currentUserId);
+            _commentData.AddComment(text, shoePicId, currentUserId);
+            return View("ShoePicAndComent");
         }
     }
 }
