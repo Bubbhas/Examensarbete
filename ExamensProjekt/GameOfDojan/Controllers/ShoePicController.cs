@@ -70,7 +70,7 @@ namespace GameOfDojan.Controllers
                 return BadRequest("Filerna måste vara jpg eller png" + e.Message);
             }
 
-            var PredictionAnswer = new Rootobject
+            var PredictionAnswer = await _aiService.MakePredictionRequest(filePath);/*new Rootobject
             {
                 Predictions = new Prediction[]{
                     new Prediction()
@@ -79,8 +79,8 @@ namespace GameOfDojan.Controllers
                         TagName = "konsultdoja"
                     }
                 }
-            };
-                //await _aiService.MakePredictionRequest(filePath);
+            };*/
+
             await UploadPicToDataBase(PredictionAnswer, filePath);
             return View("AiResponse", PredictionAnswer);
         }
