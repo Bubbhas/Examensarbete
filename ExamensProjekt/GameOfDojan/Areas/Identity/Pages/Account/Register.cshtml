@@ -32,6 +32,11 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="form-group" hidden>
+                <label asp-for="Input.ProfilePicture"></label>
+                <input asp-for="Input.ProfilePicture" class="form-control" value="~/images/blank-profile-picture-973461_640.png" />
+                <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+            </div>
             <button type="submit" class="btn btn-default">Register</button>
         </form>
     </div>

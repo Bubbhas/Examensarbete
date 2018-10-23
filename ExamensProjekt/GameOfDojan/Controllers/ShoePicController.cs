@@ -85,6 +85,11 @@ namespace GameOfDojan.Controllers
             return View("AiResponse", shoePic);
         }
 
+        public void GiveShoePicALike(int shoePicId)
+        {
+            _shoePicData.GiveALikeToShoePic(shoePicId);
+        }
+
         private async Task<ShoePic> CreateShoePic(Rootobject predictionAnswer, string filePath)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;

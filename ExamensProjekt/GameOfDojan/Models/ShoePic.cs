@@ -11,6 +11,7 @@ namespace GameOfDojan.Models
         public string ImageSource { get; set; }
         public string Description { get; set; }
         public DateTime Uploaded { get; set; }
+        public int Likes { get; set; }
 
         public ApplicationUser ApplicationUser{ get; set; }
 

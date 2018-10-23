@@ -38,5 +38,12 @@ namespace GameOfDojan.Services
             return _context.ShoePics.ToList().OrderByDescending(x=>x.Uploaded).Take(12);
 
         }
+
+        public void GiveALikeToShoePic(int shoePicId)
+        {
+            var shoePic = _context.ShoePics.Where(x => x.Id == shoePicId).First();
+            shoePic.Likes++;
+            _context.SaveChanges();
+        }
     }
 }
