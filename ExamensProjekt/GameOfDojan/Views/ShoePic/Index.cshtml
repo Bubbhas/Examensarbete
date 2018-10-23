@@ -5,33 +5,35 @@
         previewImage();
     };
 </script>
+<div class="text-center">
+    <h1>Game Of Dojan</h1>
 
-<h1>Game Of Dojan</h1>
+    <div>
+        <form method="post" enctype="multipart/form-data" asp-action="UploadPic" >
+            <div class="form-group">
 
-<div>
-    <form method="post" enctype="multipart/form-data" asp-action="UploadPic">
-        <div class="form-group">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="">
+                    <p>
+                        <b>Testa din sko</b><br />
+                        Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 4mb.
+                    </p>
+                    
+                        <input onchange="ValidateUploadType()" value="Välj fil" type="file" accept="image/*" id="uploadImage" name="files" class="file_input"  />
+                    <div id="errorMsg" class="text-danger">
 
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="">
-                <p>
-                    <b>Testa din sko</b><br />
-                    Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 4mb.
-                </p>
-                <input onchange="ValidateUploadType()" type="file" accept="image/*" id="uploadImage" name="files" class="file_input" multiple />
-                <div id="errorMsg" class="text-danger">
-
-                </div>
-                <span asp-validation-for="ImageSource" class="text-danger"></span>
-                <div id="result" class="uploadPreview">
+                    </div>
+                    <span asp-validation-for="ImageSource" class="text-danger "></span>
+                    <div id="result" class="uploadPreview">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="">
-                <input type="submit" value="Lägg upp" />
+            <div class="form-group">
+                <div class="">
+                    <input type="submit" value="Lägg upp" />
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
 
+    </div>
 </div>

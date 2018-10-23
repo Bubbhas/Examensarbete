@@ -1,20 +1,22 @@
 ﻿@model ShoePic
 
 
-
+<div class="text-center">
     @if (Model.Probability > 0.7 && Model.Probability < 1)
     {
-        <h1>Detta är en konsultdoja</h1>
-        <p>Med @Math.Round(@Model.Probability * 100, 3)%</p>
+        <h1>Grattis @Model.ApplicationUser.UserName!</h1>
+        <h3>Du får 10 poäng</h3>
+        <p>Detta är en konsultdoja med @Math.Round(@Model.Probability * 100, 3)% säkerhet</p>
 
         <img class="small" src="~/@Model.ImageSource" />
-    }else
+    }
+    else
     {
         <h1>Tyvärr, detta är inte en konsultdoja</h1>
         @*<p>Med @Math.Round(@item.Probability * 100, 3)%</p>*@
     }
 
-
+</div>
 
 
 
