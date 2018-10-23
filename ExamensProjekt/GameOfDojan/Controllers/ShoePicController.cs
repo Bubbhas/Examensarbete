@@ -118,7 +118,7 @@ namespace GameOfDojan.Controllers
         public IActionResult ShoePicWithComments(int id)
         {
             var shoePic = _shoePicData.GetShoePicWithComments(id);
-            return View("ShoePicAndComments", shoePic);
+            return View("ShoePicWithComments", shoePic);
         }
 
         [HttpPost("AddComment")]
@@ -128,7 +128,7 @@ namespace GameOfDojan.Controllers
             var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             //var currentUser = _userData.GetUser(currentUserId);
             _commentData.AddComment(text, shoePicId, currentUserId);
-            return View("ShoePicAndComments", shoePic);
+            return View("ShoePicWithComments", shoePic);
         }
     }
 }
