@@ -169,3 +169,17 @@ div.desc {
 .container .jumbotron, .container-fluid .jumbotron {
     border-radius: unset;
 }
+
+.navbar .navbar-right li {
+    min-height: 50px;
+    min-width: 50px;
+    margin-left: 15px;
+}
+
+.navbar .navbar-right form {
+    margin: 10px;
+}
+
+.navbar-header a {
+   padding-top: 10px;
+}
