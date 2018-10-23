@@ -154,8 +154,8 @@ function ValidateUploadType() {
         document.getElementById("errorMsg").innerHTML = "<p>Filen måste vara .jpg eller .png</p>";
         document.getElementById("submitButton").disabled = true; 
     }
-    else if (imageSize > 2000000) {
-        document.getElementById("errorMsg").innerHTML = "<p>Filen får inte vara större än 2mb</p>";
+    else if (imageSize > 3500000) {
+        document.getElementById("errorMsg").innerHTML = "<p>Filen får inte vara större än 3.5mb</p>";
         document.getElementById("submitButton").disabled = true; 
     }
     else {
