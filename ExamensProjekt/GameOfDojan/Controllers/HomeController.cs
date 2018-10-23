@@ -27,7 +27,7 @@ namespace GameOfDojan.Controllers
             var vm = new HomePage
             {
                 User = _userService.GetTop10UserPoints(),
-                ShoePic = _shoePicData.GetAllShoePicsFromLast7Days()
+                ShoePic = _shoePicData.GetLatest12ShoePics()
             };
 
             return View(vm);

@@ -10,7 +10,7 @@ namespace GameOfDojan.Services
     public interface IShoePicData
     {
         void AddPictureToDatabase(ShoePic pic);
-       IEnumerable<ShoePic> GetAllShoePicsFromLast7Days();
+       IEnumerable<ShoePic> GetLatest12ShoePics();
        ShoePic GetShoePicWithComments(int id);
         //ShoePic GetPicFromFolder(int id);
     }
