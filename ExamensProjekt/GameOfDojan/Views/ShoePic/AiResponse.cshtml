@@ -28,13 +28,14 @@
     }
     else
     {
-      
-            <h1>Tyvärr @Model.ApplicationUser.UserName, detta är inte en konsultdoja</h1>
-            <img class="small" src="~/@Model.ImageSource" />
-            <br />
-            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='@Url.Action("Index", "ShoePic")'">Försök igen</button>
-            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">Gå till startsida</button>
-  
+
+        <h1>Tyvärr @Model.ApplicationUser.UserName, detta är inte en konsultdoja</h1>
+        <img class="small" src="~/@Model.ImageSource" />
+        <br />
+        <div class="airesponse-btns">
+            <button type="button" class="airesponse-btn-retry" onclick="location.href='@Url.Action("Index", "ShoePic")'">Försök igen <img src="~/images/retry.png" /></button>
+            <button type="button" class="airesponse-btn-startpage" onclick="location.href='@Url.Action("Index", "Home")'">Gå till startsida <img src="~/images/homepage.png" /></button>
+        </div>
     }
 
 </div>
