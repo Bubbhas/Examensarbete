@@ -7,8 +7,10 @@
         <h1>Grattis @Model.ApplicationUser.UserName!</h1>
         <h3>Du får 10 poäng</h3>
         <p>Detta är en konsultdoja med @Math.Round(@Model.Probability * 100, 3)% säkerhet</p>
-
-        <img class="small" src="~/@Model.ImageSource" />
+        <a asp-controller="ShoePic" asp-action="ShoePicWithComments" asp-route-id="@Model.Id">
+            <img class="small" src="~/@Model.ImageSource" />
+        </a>
+       
     }
     else
     {
