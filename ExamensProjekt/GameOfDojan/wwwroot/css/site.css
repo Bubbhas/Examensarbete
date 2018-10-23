@@ -46,7 +46,7 @@ body {
     }
 }
 .navbar {
-    background-color: #464647;
+    background-color: #0A0A0A;
 }
 
 .navbar-brand img {
@@ -69,7 +69,8 @@ body {
 }
 .jumbotron {
     background-image: url(../images/jumbopic.jpg);
-    opacity: 1.2;
+    border: none;
+    border-radius: unset;
 }
 
 div.gallery {
