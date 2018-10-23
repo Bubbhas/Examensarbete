@@ -166,3 +166,6 @@ div.desc {
         background-color: #fff;
         border-color: #fff;
     }
+.container .jumbotron, .container-fluid .jumbotron {
+    border-radius: unset;
+}
