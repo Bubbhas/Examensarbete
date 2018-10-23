@@ -38,6 +38,10 @@ namespace GameOfDojan.Services
             return _context.ShoePics.ToList().OrderByDescending(x=>x.Uploaded).Take(12);
 
         }
+        public IEnumerable<ShoePic> GetAllShoePics()
+        {
+            return _context.ShoePics.ToList();
+        }
 
         public void UpdateShoePicDescription(string description, int id)
         {

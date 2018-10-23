@@ -56,6 +56,14 @@ namespace GameOfDojan.Controllers
                 return false;
         }
 
+        public IActionResult AllShoePics()
+        {
+            var shoePics = _shoePicData.GetAllShoePics();
+
+
+            return View("AllShoePics", shoePics);
+        }
+
         [HttpPost]
         public async Task<IActionResult> UploadPic(List<IFormFile> files)
         {
