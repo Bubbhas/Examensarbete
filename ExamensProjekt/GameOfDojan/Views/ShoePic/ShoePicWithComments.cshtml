@@ -1,5 +1,4 @@
 ﻿@model ShoePic
-@*@inject Comment Comment*@
 
 @{
     ViewData["Title"] = "ShoePicAndComments";
@@ -8,16 +7,14 @@
 
 <div class="container text-center">
     <h2>
-        @if (Model.Name != null)
-        {
-            @Model.Name
 
-        }
+
     </h2>
 
 
     <img class="small" src="~/@Model.ImageSource" />
 
+    <p>@Model.Description</p>
 
 </div>
 
