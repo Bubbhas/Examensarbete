@@ -51,13 +51,9 @@ namespace GameOfDojan.Controllers
         private bool UserIsAuthenticated()
         {
             if (HttpContext.User.Identity.IsAuthenticated)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         [HttpPost]
@@ -67,7 +63,6 @@ namespace GameOfDojan.Controllers
             try
             {
                 filePath = await _shoePicService.AddPicToFolder(files);
-
             }
             catch (Exception e)
             {
@@ -105,9 +100,7 @@ namespace GameOfDojan.Controllers
             foreach (var item in predictionAnswer.Predictions)
             {
                 if (item.TagName == "konsultdoja")
-                {
                     shoePic.Probability = item.Probability;
-                }
             }
             return shoePic;
 
@@ -118,18 +111,13 @@ namespace GameOfDojan.Controllers
             if (shoePic.Probability > 0.7 && shoePic.Probability < 1)
             {
                 _shoePicData.AddPictureToDatabase(shoePic);
-
                 _userData.AddPointToUser(shoePic.ApplicationUser);
-
             }
-
         }
 
         public IActionResult ShoePicWithComments(int id)
         {
             var shoePic = _shoePicData.GetShoePicWithComments(id);
-
-
             return View("ShoePicAndComments", shoePic);
         }
 
