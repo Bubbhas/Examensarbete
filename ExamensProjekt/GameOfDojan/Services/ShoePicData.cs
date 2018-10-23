@@ -27,8 +27,8 @@ namespace GameOfDojan.Services
         
         public ShoePic GetShoePicWithComments(int id)
         {
-            var shoePic = _context.ShoePics.Include(x => x.Comments).ThenInclude(x => x.ApplicationUser).FirstOrDefault(p => p.Id == id);
-            shoePic.Comments = _context.Comments.Where((x => x.Id == id)).ToList();
+            var shoePic = _context.ShoePics.Include(x=>x.ApplicationUser).Include(x => x.Comments).ThenInclude(x => x.ApplicationUser).FirstOrDefault(p => p.Id == id);
+            //shoePic.Comments = _context.Comments.Where((x => x.Id == id)).ToList();
 
             return shoePic;
         }

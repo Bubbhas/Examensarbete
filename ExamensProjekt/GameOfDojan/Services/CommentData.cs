@@ -20,11 +20,16 @@ namespace GameOfDojan.Services
 
         public void AddComment(string text, int picId, string currentUserId)
         {
-            _context.Add(new Comment {
+
+           
+            var shoeComment = new Comment
+            {
                 Text = text,
                 ShoePicId = picId,
                 ApplicationUserId = currentUserId,
-                CreateDate = DateTime.Now });
+                CreateDate = DateTime.Now
+            };
+            _context.Comments.Add(shoeComment);
             _context.SaveChanges();
         }
     }

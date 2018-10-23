@@ -1,4 +1,7 @@
-﻿@model ShoePic
+﻿@using Microsoft.AspNetCore.Identity
+
+@model ShoePic
+@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "ShoePicAndComments";
@@ -7,8 +10,8 @@
 
 <div class="container text-center">
     <h2>
-
-
+        
+@Model.ApplicationUser.UserName
     </h2>
 
 
