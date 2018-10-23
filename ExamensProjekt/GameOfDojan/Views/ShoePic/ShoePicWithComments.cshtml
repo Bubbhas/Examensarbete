@@ -10,13 +10,15 @@
 
 <div class="container text-center">
     <h2>
-        
-@Model.ApplicationUser.UserName
+
+        @Model.ApplicationUser.UserName
     </h2>
 
-
-    <img class="small" src="~/@Model.ImageSource" />
-
+    <div>
+        <img class="small" src="~/@Model.ImageSource" />
+        @*<input name="shoePicId" value="@Model.Id" hidden />*@
+        <p><small><a asp-controller="ShoePic" asp-action="GiveShoePicALike" asp-route-id="@Model.Id" >Like</a> @Model.Likes - <a href="">Share</a></small></p>
+    </div>
     <p>@Model.Description</p>
 
 </div>
@@ -54,12 +56,8 @@
                                 @*<img src="">   profilbild?*@
                             </a>
                             <div class="media-body">
-
                                 <h4 class="media-heading user_name">@item.ApplicationUser.UserName</h4>
                                 <p>@item.Text</p>
-
-
-                                <p><small><a asp-action="GiveShoePicALike">Like</a> - <a href="">Share</a></small></p>
                             </div>
                         </div>
                     }

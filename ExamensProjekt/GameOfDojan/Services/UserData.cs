@@ -24,7 +24,10 @@ namespace GameOfDojan.Services
 
         public ApplicationUser GetUser(string id)
         {
-            return _context.ApplicationUsers.Include(x => x.ShoePicsList).FirstOrDefault(x => x.Id == id);
+            return _context.ApplicationUsers
+                .Include(x => x.ShoePicsList)
+                .Include(x => x.Comments)
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public List<ApplicationUser> GetTop10UserPoints()

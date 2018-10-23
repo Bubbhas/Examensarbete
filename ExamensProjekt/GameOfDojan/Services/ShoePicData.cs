@@ -52,9 +52,11 @@ namespace GameOfDojan.Services
             return _context.ShoePics.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public void GiveALikeToShoePic(int shoePicId)
+        public void GiveShoePicALike(int shoePicId)
         {
-            var shoePic = _context.ShoePics.Where(x => x.Id == shoePicId).First();
+            var shoePic = _context.ShoePics
+                .Include(x=>x.ApplicationUser)
+                .FirstOrDefault(x=>x.Id == shoePicId);
             shoePic.Likes++;
             _context.SaveChanges();
         }

@@ -85,9 +85,11 @@ namespace GameOfDojan.Controllers
             return View("AiResponse", shoePic);
         }
 
-        public void GiveShoePicALike(int shoePicId)
+        public IActionResult GiveShoePicALike(int id)
         {
-            _shoePicData.GiveALikeToShoePic(shoePicId);
+            _shoePicData.GiveShoePicALike(id);
+            var shoePic = _shoePicData.GetShoePicWithComments(id);
+            return View("ShoePicWithComments", shoePic);
         }
 
         private async Task<ShoePic> CreateShoePic(Rootobject predictionAnswer, string filePath)
