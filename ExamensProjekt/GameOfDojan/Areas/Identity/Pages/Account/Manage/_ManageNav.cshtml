@@ -4,27 +4,13 @@
 }
 <ul class="nav nav-tabs">
     <li class="@ManageNavPages.ProfileNavClass(ViewContext) nav-item"><a asp-page="./Profile">Profile</a></li>
-    <li class="@ManageNavPages.IndexNavClass(ViewContext) nav-item"><a asp-page="./Index">Manage</a></li>
+    <li class="@ManageNavPages.IndexNavClass(ViewContext) nav-item"><a asp-page="./Index">Hantera konto</a></li>
     <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext) nav-item"><a id="change-password" asp-page="./ChangePassword">Ändra lösenord</a></li>
-    @if (hasExternalLogins)
+    @*@if (hasExternalLogins)
     {
         <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext) nav-item"><a id="external-login" asp-page="./ExternalLogins">External logins</a></li>
-    }
+    }*@
     @*<li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)"><a asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>*@
-    <li class="@ManageNavPages.PersonalDataNavClass(ViewContext) nav-item"><a asp-page="./PersonalData">Personlig data</a></li>
+    <li class="@ManageNavPages.PersonalDataNavClass(ViewContext) nav-item"><a asp-page="./PersonalData">Din data</a></li>
 </ul>
 
-@*<ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-</ul>*@
