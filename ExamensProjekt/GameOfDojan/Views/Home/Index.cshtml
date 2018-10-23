@@ -66,7 +66,7 @@
                                 @foreach (var item in Model.ShoePic)
                                 {
                                     <a asp-controller="ShoePic" asp-action="ShoePicWithComments" asp-route-id="@item.Id">
-                                        <img style="margin: 2px; height:100px; width: 100px;" class="thumbnail-mini" src="@item.ImageSource" />
+                                        <img class="thumbnail-mini" src="@item.ImageSource" />
                                     </a>
                                 }
                                 <div class="btn-group">
