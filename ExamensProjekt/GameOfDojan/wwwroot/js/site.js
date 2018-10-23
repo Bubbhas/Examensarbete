@@ -15,7 +15,8 @@ function previewImage() {
                 let picReader = new FileReader();
                 picReader.addEventListener("load", function (event) {
                     let picFile = event.target;
-                    let div = document.createElement("div");
+                    //let div = document.createElement("div");
+                    let div = document.getElementById("previewImageDiv")
                     div.innerHTML = "<img class='text-center' id='imagePreview' src='" + picFile.result + "'" +
                         "title='" + picFile.name + "'/>";
                     output.insertBefore(div, null);

@@ -12,6 +12,11 @@ body {
     padding-right: 15px;
 }
 
+/*Ordnar previewBilden*/
+#previewImageDiv {
+    padding-top: 2px;
+}
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
