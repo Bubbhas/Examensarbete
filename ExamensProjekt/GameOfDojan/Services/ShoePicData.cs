@@ -38,5 +38,18 @@ namespace GameOfDojan.Services
             return _context.ShoePics.ToList().OrderByDescending(x=>x.Uploaded).Take(12);
 
         }
+
+        public void UpdateShoePicDescription(string description, int id)
+        {
+            ShoePic shoePic = GetShoePicById(id);
+            shoePic.Description = description;
+            _context.ShoePics.Update(shoePic);
+            _context.SaveChanges();
+        }
+
+        public ShoePic GetShoePicById(int id)
+        {
+            return _context.ShoePics.Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }

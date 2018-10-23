@@ -131,5 +131,13 @@ namespace GameOfDojan.Controllers
 
             return View("ShoePicWithComments", shoePic);
         }
+
+        public IActionResult UpdateDescriptionToShoePic(string description, int shoePicId)
+        {
+            
+            _shoePicData.UpdateShoePicDescription(description, shoePicId);
+            var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
+            return View("ShoePicWithComments", shoePic);
+        }
     }
 }
