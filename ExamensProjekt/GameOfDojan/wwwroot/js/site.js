@@ -148,11 +148,17 @@ getAllUsers().then((result) => {
 
 function ValidateUploadType() {
     let imageSource = document.getElementById("uploadImage").value;
-    
+    let imageSize = document.getElementById("uploadImage").files[0].size;
     if (!imageSource.endsWith(".jpg") && !imageSource.endsWith(".png")) {
         document.getElementById("errorMsg").innerHTML = "<p>Filen måste vara .jpg eller .png</p>";
+        document.getElementById("submitButton").disabled = true; 
+    }
+    else if (imageSize > 2000000) {
+        document.getElementById("errorMsg").innerHTML = "<p>Filen får inte vara större än 2mb</p>";
+        document.getElementById("submitButton").disabled = true; 
     }
     else {
+        document.getElementById("submitButton").removeAttribute("disabled");  
         document.getElementById("errorMsg").innerHTML = "";
     }
 }
