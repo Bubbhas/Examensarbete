@@ -221,3 +221,31 @@ div.desc {
 .profile-top-row {
     padding-top: 15px;
 }
+
+.file_input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+}
+
+label {
+    width: 200px;
+    height: 40px;
+    font-size: 1em;
+    font-weight: 500;
+    color: white;
+    line-height: 2.6em;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #629AB8;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 0px 3px 0px #396370;
+    transition: 150ms;
+}
+    :focus label,
+    label:hover {
+        background-color: #93AADF;
+        box-shadow: 0px 5px 0px #3E6C7A;
+        cursor: pointer;
+    }

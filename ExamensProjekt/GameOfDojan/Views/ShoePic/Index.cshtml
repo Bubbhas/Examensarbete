@@ -23,9 +23,9 @@
                 <p>
                     <b>Obs!</b> Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 4mb.
                 </p>
-
-                <input onchange="ValidateUploadType()" value="Välj fil" type="file" accept="image/*" id="uploadImage" name="files" class="file_input " />
-                <div id="previewImageDiv" ></div>
+                <label for="uploadImage">Välj fil</label>
+                <input onchange="ValidateUploadType()" type="file" accept="image/*" id="uploadImage" name="files" class="file_input " />
+                <div id="previewImageDiv"></div>
                 <div id="errorMsg" class="text-danger">
 
                 </div>
