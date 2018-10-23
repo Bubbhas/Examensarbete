@@ -10,7 +10,21 @@
         <a asp-controller="ShoePic" asp-action="ShoePicWithComments" asp-route-id="@Model.Id">
             <img class="small" src="~/@Model.ImageSource" />
         </a>
-       
+        <br />
+
+        <form asp-action="UpdateDescriptionToShoePic" method="post">
+            <div class="form-group">
+                <label class="control-label"></label>
+                <input name="description" class="form-control" placeholder="Lägg till en beskrivning" />
+            </div>
+            <div>
+                <input name="shoePicId" value="@Model.Id" hidden />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lägg till en beskrivning" class="btn btn-default" />
+            </div>
+        </form>
+
     }
     else
     {
