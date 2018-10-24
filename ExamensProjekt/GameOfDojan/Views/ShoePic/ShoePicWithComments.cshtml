@@ -17,7 +17,7 @@
     <div>
         <img class="small" src="~/@Model.ImageSource" />
         @*<input name="shoePicId" value="@Model.Id" hidden />*@
-        <p><small><a asp-controller="ShoePic" asp-action="GiveShoePicALike" asp-route-id="@Model.Id" >Like</a> @Model.Likes - <a href="">Share</a></small></p>
+        <p><small><a asp-controller="ShoePic" asp-action="GiveShoePicALike" asp-route-id="@Model.Id" >Like</a> @Model.Likes.Count() - <a href="">Share</a></small></p>
     </div>
     <p>@Model.Description</p>
 

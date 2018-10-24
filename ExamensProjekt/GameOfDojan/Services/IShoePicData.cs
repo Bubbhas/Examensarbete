@@ -9,7 +9,7 @@ namespace GameOfDojan.Services
        IEnumerable<ShoePic> GetLatest12ShoePics();
        ShoePic GetShoePicWithComments(int id);
         void UpdateShoePicDescription(string description, int id);
-        void GiveShoePicALike(int shoePicId);
+        void GiveShoePicALike(int shoePicId, string currentUserId);
         IEnumerable<ShoePic> GetAllShoePics();
         //ShoePic GetPicFromFolder(int id);
     }

@@ -95,7 +95,15 @@ namespace GameOfDojan.Controllers
 
         public IActionResult GiveShoePicALike(int id)
         {
-            _shoePicData.GiveShoePicALike(id);
+            var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            try
+            {
+                _shoePicData.GiveShoePicALike(id, currentUserId);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
             var shoePic = _shoePicData.GetShoePicWithComments(id);
             return View("ShoePicWithComments", shoePic);
         }
