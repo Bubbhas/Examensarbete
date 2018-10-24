@@ -95,17 +95,26 @@ namespace GameOfDojan.Controllers
 
         public IActionResult GiveShoePicALike(int id)
         {
-            var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            try
+         
+            if (UserIsAuthenticated())
             {
-                _shoePicData.GiveShoePicALike(id, currentUserId);
+                var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                try
+                {
+                    _shoePicData.GiveShoePicALike(id, currentUserId);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex);
+                }
+                var shoePic = _shoePicData.GetShoePicWithComments(id);
+                return View("ShoePicWithComments", shoePic);
             }
-            catch (Exception ex)
+            else
             {
-                return BadRequest(ex);
+                return RedirectToPage("/Account/LogIn", "", new { area = "Identity" });
             }
-            var shoePic = _shoePicData.GetShoePicWithComments(id);
-            return View("ShoePicWithComments", shoePic);
+
         }
 
         private async Task<ShoePic> CreateShoePic(Rootobject predictionAnswer, string filePath)
@@ -143,15 +152,21 @@ namespace GameOfDojan.Controllers
             return View("ShoePicWithComments", shoePic);
         }
 
-        //[HttpPost("AddComment")]
         public IActionResult AddCommentToShoePic(string text, int shoePicId)
         {
-            var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var currentUser = _userData.GetUser(currentUserId);
-            _commentData.AddComment(text, shoePicId, currentUserId);
-            var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
+            if (UserIsAuthenticated())
+            {
+                var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                //var currentUser = _userData.GetUser(currentUserId);
+                _commentData.AddComment(text, shoePicId, currentUserId);
+                var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
 
-            return View("ShoePicWithComments", shoePic);
+                return View("ShoePicWithComments", shoePic);
+            }
+            else
+            {
+                return RedirectToPage("/Account/LogIn", "", new { area = "Identity" });
+            }
         }
 
         public IActionResult UpdateDescriptionToShoePic(string description, int shoePicId)
