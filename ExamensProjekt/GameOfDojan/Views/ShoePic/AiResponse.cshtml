@@ -1,16 +1,25 @@
 ﻿@model ShoePic
 
-
 <div class="text-center">
     @if (Model.Probability > 0.7 && Model.Probability < 1)
     {
-        <h1>Grattis @Model.ApplicationUser.UserName!</h1>
-        <h3>Du får 10 poäng</h3>
-        <p>Detta är en konsultdoja med @Math.Round(@Model.Probability * 100, 3)% säkerhet</p>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <div class="container-airesponse">
+            <span class="congrats">
+                GRATTIS
+                <br />
+                @Model.ApplicationUser.UserName
+            </span>
+            <span class="text-airesoonse">Du får 10 poäng</span>
+        </div>
+
+
         <a asp-controller="ShoePic" asp-action="ShoePicWithComments" asp-route-id="@Model.Id">
-            <img class="small" src="~/@Model.ImageSource" />
+
+            <img class="small-airesponse" src="~/@Model.ImageSource" />
         </a>
         <br />
+        <p class="probability-text"> Detta är en konsultdoja med <span style="color:#0da01d">@Math.Round(@Model.Probability * 100, 3) %</span> säkerhet </p>
 
         <form asp-action="UpdateDescriptionToShoePic" method="post">
             <div class="form-group">
@@ -28,17 +37,24 @@
     }
     else
     {
-
-        <h1>Tyvärr @Model.ApplicationUser.UserName, detta är inte en konsultdoja</h1>
-        <img class="small" src="~/@Model.ImageSource" />
-        <br />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <div class="container-airesponse">
+            <span class="sorry">
+                TYVÄRR
+                <br />
+                @Model.ApplicationUser.UserName
+            </span>
+            <span class="text-airesoonse"> Detta är inte en konsultdoja</span>
+        </div>
+        <div class="container">
+            <img class="small-airesponse" src="~/@Model.ImageSource" />
+        </div>
         <div class="airesponse-btns">
-            <button type="button" class="airesponse-btn-retry" onclick="location.href='@Url.Action("Index", "ShoePic")'">Försök igen <img src="~/images/retry.png" /></button>
-            <button type="button" class="airesponse-btn-startpage" onclick="location.href='@Url.Action("Index", "Home")'">Gå till startsida <img src="~/images/homepage.png" /></button>
+            <button type="button" class="airesponse-btn-retry" onclick="location.href='@Url.Action("Index", "ShoePic")'">Försök igen<img src="~/images/retry.png" /></button>
+            <button type="button" class="airesponse-btn-startpage" onclick="location.href='@Url.Action("Index", "Home")'">Gå till startsida<img src="~/images/homepage.png" /></button>
         </div>
     }
 
 </div>
-
 
 
