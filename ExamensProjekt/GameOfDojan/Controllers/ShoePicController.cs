@@ -162,5 +162,6 @@ namespace GameOfDojan.Controllers
             var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
             return View("ShoePicWithComments", shoePic);
         }
+
     }
 }

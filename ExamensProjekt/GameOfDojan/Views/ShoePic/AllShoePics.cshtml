@@ -1,0 +1,9 @@
+﻿@model ICollection<ShoePic>
+
+<h2>Alla uppladdade bilder</h2>
+@foreach (var item in Model)
+{
+    <a asp-controller="ShoePic" asp-action="ShoePicWithComments" asp-route-id="@item.Id">
+        <img class="thumbnail-mini" src="~/@item.ImageSource" />
+    </a>
+}
