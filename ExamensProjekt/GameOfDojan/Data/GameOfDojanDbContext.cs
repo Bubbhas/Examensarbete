@@ -18,7 +18,12 @@ namespace GameOfDojan.Data
         public DbSet<ShoePic> ShoePics { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
+        public DbSet<Likes> Likes { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Likes>().HasKey(x => new { x.ApplicationUserId, x.ShoePicId });
+            base.OnModelCreating(builder);
+        }
 
     }
 }

@@ -11,5 +11,7 @@ namespace GameOfDojan.Models
         public string ProfilePicture { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public List<Likes> Likes { get; set; }
     }
 }

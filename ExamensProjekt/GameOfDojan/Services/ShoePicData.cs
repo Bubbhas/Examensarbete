@@ -27,7 +27,10 @@ namespace GameOfDojan.Services
         
         public ShoePic GetShoePicWithComments(int id)
         {
-            var shoePic = _context.ShoePics.Include(x=>x.ApplicationUser).Include(x => x.Comments).ThenInclude(x => x.ApplicationUser).FirstOrDefault(p => p.Id == id);
+            var shoePic = _context.ShoePics.Include(x=>x.ApplicationUser)
+                .Include(x=>x.Likes)
+                .Include(x => x.Comments).ThenInclude(x => x.ApplicationUser)
+                .FirstOrDefault(p => p.Id == id);
             //shoePic.Comments = _context.Comments.Where((x => x.Id == id)).ToList();
 
             return shoePic;
@@ -56,12 +59,18 @@ namespace GameOfDojan.Services
             return _context.ShoePics.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public void GiveShoePicALike(int shoePicId)
+        public void GiveShoePicALike(int shoePicId, string currentUserId)
         {
-            var shoePic = _context.ShoePics
-                .Include(x=>x.ApplicationUser)
-                .FirstOrDefault(x=>x.Id == shoePicId);
-            shoePic.Likes++;
+            //var shoePic = _context.Likes.Include(x=>x.ShoePics)
+            //    .Include(x=>x.ApplicationUser)
+            //    .FirstOrDefault(x=>x.Id == shoePicId);
+
+            _context.Likes.Add(new Likes
+            {
+                ShoePicId = shoePicId,
+                ApplicationUserId = currentUserId
+            });
+            
             _context.SaveChanges();
         }
     }
