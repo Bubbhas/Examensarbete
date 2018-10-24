@@ -252,7 +252,7 @@ navbar-logo:hover {
 }
 
 .label.label-default.rank-label {
-    background-color: rgb(81, 210, 183);
+    background-color: #629ab8;
     padding: 10px 17px 10px 17px;
     border-radius: 28px;
 }
@@ -559,3 +559,8 @@ a:hover, a:focus {
     font-size: 14px;
     font-weight: bold;
 }
+
+.pic-description {
+    text-align: center;
+}
+
