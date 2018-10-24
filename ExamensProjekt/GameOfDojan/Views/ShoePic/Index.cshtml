@@ -1,46 +1,56 @@
 ﻿@model ShoePic
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     window.onload = function () {
         previewImage();
     };
+    $(document).ready(function () {
+        $('.has-animation').each(function (index) {
+            $(this).delay($(this).data('delay')).queue(function () {
+                $(this).addClass('animate-in');
+            });
+        });
+    });
 </script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1">
 <div class="text-center">
     <br />
-    <div id="imgLogo">
-        <img src="~/Logo/logodark.png" />
-
+    <div class="has-animation animation-ltr" data-delay="10">
+        <p class="bigger">Testa din sko</p>
     </div>
 
-
-    <h1><b>Testa din sko!</b></h1>
+    <br>
 
     <form method="post" enctype="multipart/form-data" asp-action="UploadPic">
         <div class="form-group">
-
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="">
-                <p>
-                    <b>Obs!</b> Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 3.5mb.
-                </p>
-                <div class="test-shoe">
-                    <label for="uploadImage">Välj fil</label>
+            <div class="has-animation animation-rtl" data-delay="1000">
+                <p class="text"><b>Obs!</b> Endast formaten .jpg och .png tillåts. Bilden får inte vara större än 3.5mb.</p>
+
+                <br>
+                <div class="uploadImg">
+                    <div class="test-shoe">
+                        <label for="uploadImage">Välj fil</label>
                     </div>
                     <input onchange="ValidateUploadType()" type="file" accept="image/*" id="uploadImage" name="files" class="file_input " />
                     <div id="previewImageDiv"></div>
                     <div id="errorMsg" class="text-danger">
-
                     </div>
                     <span asp-validation-for="ImageSource" class="text-danger "></span>
+
                     <div id="result" class="uploadPreview">
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="">
+                            <input id="submitButton" class="btn btn-secondary btn-lg" type="submit" value="Lägg upp" disabled />
+                        </div>
                     </div>
                 </div>
             </div>
-        <div class="form-group">
-            <div class="">
-                <input id="submitButton" class="btn btn-secondary btn-lg" type="submit" value="Lägg upp" disabled />
-            </div>
-        </div>
     </form>
-
 </div>
