@@ -30,6 +30,10 @@ namespace GameOfDojan.Services
 
         public string GetNewFilePath(string formFile)
         {
+            if (formFile == null)
+            {
+                throw new ArgumentException();
+            }
             string randomFileName = Path.GetRandomFileName();
             string newFilePath = "";
             if (formFile.ToLower().EndsWith(".jpg"))

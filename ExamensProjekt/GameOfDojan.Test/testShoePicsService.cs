@@ -5,7 +5,7 @@ using System;
 namespace GameOfDojan.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class TestShoePicsService
     {
         ShoePicService shoePicService = new ShoePicService();
         [TestMethod]
@@ -15,7 +15,13 @@ namespace GameOfDojan.Test
             Assert.AreEqual(".jpg", filePath.Substring(filePath.Length-4));
         }
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        public void ShouldReturnFilePathNameThatEndsWithPng()
+        {
+            string filePath = shoePicService.GetNewFilePath("validate.png");
+            Assert.AreEqual(".png", filePath.Substring(filePath.Length - 4));
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void ShouldReturnExceptionWhenFilePathNameDontEndWithJpgOrPng()
         {
           shoePicService.GetNewFilePath("DontValidate.pdf");
@@ -23,7 +29,7 @@ namespace GameOfDojan.Test
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void xxxxxxxx()
+        public void ShouldReturnArgExceptionDueToNull()
         {
             shoePicService.GetNewFilePath(null);
         }
