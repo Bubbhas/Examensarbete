@@ -30,8 +30,8 @@ body {
 }
 
 /*Gör bilden mindre*/
-    #imagePreview {
-    max-height: 200px;   
+#imagePreview {
+    max-height: 200px;
 }
 /* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
@@ -50,6 +50,7 @@ body {
         display: none;
     }
 }
+
 .navbar {
     background-color: #0A0A0A;
 }
@@ -72,6 +73,7 @@ body {
     margin-left: -50vw;
     margin-right: -50vw;
 }
+
 .jumbotron {
     background-image: url(../images/jumbopic.jpg);
     border: none;
@@ -98,13 +100,16 @@ div.desc {
     padding: 15px;
     text-align: center;
 }
+
 .thumbnail {
     max-height: 200px;
     width: auto;
 }
+
 .jumbotron p {
     color: #FFFAF9;
 }
+
 .thumbnail-mini {
     /*max-height: 100px;*/
     width: auto;
@@ -112,7 +117,14 @@ div.desc {
     height: 120px;
     width: 120px;
     border-radius: 4%;
+}
 
+    .thumbnail-mini:hover {
+        opacity: 0.8;
+    }
+
+.a:hover {
+    opacity: 0.8;
 }
 
 .autocomplete {
@@ -153,7 +165,6 @@ div.desc {
 
 .small {
     max-height: 350px;
-
 }
 
 
@@ -177,6 +188,7 @@ div.desc {
         background-color: #fff;
         border-color: #fff;
     }
+
 .container .jumbotron, .container-fluid .jumbotron {
     border-radius: unset;
 }
@@ -192,7 +204,7 @@ div.desc {
 }
 
 .navbar-header a {
-   padding-top: 10px;
+    padding-top: 10px;
 }
 
 .img-circle {
@@ -218,6 +230,7 @@ div.desc {
     margin: 0 auto;
     text-align: center;
 }
+
 .profile-top-row {
     padding-top: 15px;
 }
@@ -243,12 +256,13 @@ div.desc {
     box-shadow: 0px 3px 0px #396370;
     transition: 150ms;
 }
-.test-shoe:focus label,
-.test-shoe label:hover {
-    background-color: #93AADF;
-    box-shadow: 0px 5px 0px #3E6C7A;
-    cursor: pointer;
-}
+
+    .test-shoe:focus label,
+    .test-shoe label:hover {
+        background-color: #93AADF;
+        box-shadow: 0px 5px 0px #3E6C7A;
+        cursor: pointer;
+    }
 
 .airesponse-btn-retry {
     width: 200px;
@@ -272,12 +286,14 @@ div.desc {
         box-shadow: 0px 5px 0px #3E6C7A;
         cursor: pointer;
     }
+
     .airesponse-btn-retry img,
     .airesponse-btn-startpage img {
         max-height: 20px;
         padding-left: 5px;
         margin-top: -6px;
     }
+
 .airesponse-btn-startpage {
     width: 200px;
     height: 40px;
@@ -301,12 +317,13 @@ div.desc {
         box-shadow: 0px 5px 0px #0A0A0A;
         cursor: pointer;
     }
-    .airesponse-btns button {
-        margin: 15px;
-    }
-    .airesponse-btns img {
 
-    }
+.airesponse-btns button {
+    margin: 15px;
+}
+
+.airesponse-btns img {
+}
 
 .has-animation {
     position: relative;
@@ -424,9 +441,3 @@ div.desc {
         opacity: 1;
     }
 }
-
-
-
-
-
-
