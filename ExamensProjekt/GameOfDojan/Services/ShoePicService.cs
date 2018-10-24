@@ -17,7 +17,7 @@ namespace GameOfDojan.Services
             var filePath = "";
             foreach (var formFile in files)
             {
-                newFilePath = GetNewFilePath(formFile);
+                newFilePath = GetNewFilePath(formFile.FileName);
                 filePath = Path.GetTempFileName();
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
@@ -28,22 +28,21 @@ namespace GameOfDojan.Services
             return newFilePath;
         }
 
-        private string GetNewFilePath(IFormFile formFile)
+        public string GetNewFilePath(string formFile)
         {
             string randomFileName = Path.GetRandomFileName();
             string newFilePath = "";
-            if (formFile.FileName.ToLower().EndsWith(".jpg"))
+            if (formFile.ToLower().EndsWith(".jpg"))
             {
                 newFilePath = $@"wwwroot\Pics\{randomFileName}.jpg";
             }
-            else if (formFile.FileName.ToLower().EndsWith(".png"))
+            else if (formFile.ToLower().EndsWith(".png"))
             {
              newFilePath = $@"wwwroot\Pics\{randomFileName}.png";
             }
             else
             {
-                 throw new Exception();
-
+                 throw new ArgumentException();
             }
             return newFilePath;
         }

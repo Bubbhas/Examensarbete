@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOfDojan", "GameOfDojan\GameOfDojan.csproj", "{B4998A32-1D45-4811-AEF4-4721C260D4AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfDojan.Test", "GameOfDojan.Test\GameOfDojan.Test.csproj", "{BD037238-2600-4696-8D66-83117748F3D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B4998A32-1D45-4811-AEF4-4721C260D4AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4998A32-1D45-4811-AEF4-4721C260D4AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4998A32-1D45-4811-AEF4-4721C260D4AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD037238-2600-4696-8D66-83117748F3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD037238-2600-4696-8D66-83117748F3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD037238-2600-4696-8D66-83117748F3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD037238-2600-4696-8D66-83117748F3D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
