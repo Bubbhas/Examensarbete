@@ -154,11 +154,19 @@ namespace GameOfDojan.Controllers
 
         public IActionResult AddCommentToShoePic(string text, int shoePicId)
         {
-            var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            _commentData.AddComment(text, shoePicId, currentUserId);
-            var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
+            if (UserIsAuthenticated())
+            {
+                var currentUserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                //var currentUser = _userData.GetUser(currentUserId);
+                _commentData.AddComment(text, shoePicId, currentUserId);
+                var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
 
-            return View("ShoePicWithComments", shoePic);
+                return View("ShoePicWithComments", shoePic);
+            }
+            else
+            {
+                return RedirectToPage("/Account/LogIn", "", new { area = "Identity" });
+            }
         }
 
         public IActionResult UpdateDescriptionToShoePic(string description, int shoePicId)
