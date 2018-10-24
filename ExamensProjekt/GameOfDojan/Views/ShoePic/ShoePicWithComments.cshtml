@@ -13,6 +13,7 @@
 
         @Model.ApplicationUser.UserName
     </h2>
+    <p><button class="black-btn" href="#" onclick="goBack()" class="btn-left">Tillbaka</button></p>
 
     <div>
         <img class="small" src="~/@Model.ImageSource" />
@@ -20,7 +21,7 @@
         <div class="like-div"><p><small><a asp-controller="ShoePic" asp-action="GiveShoePicALike" asp-route-id="@Model.Id"><img class="like-img" src="~/images/like.svg" /></a> @Model.Likes.Count()</small></p></div>
     </div>
 
-    </div>
+</div>
     <p>@Model.Description</p>
 
 
