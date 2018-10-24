@@ -20,8 +20,6 @@ namespace GameOfDojan.Services
 
         public void AddComment(string text, int picId, string currentUserId)
         {
-
-           
             var shoeComment = new Comment
             {
                 Text = text,

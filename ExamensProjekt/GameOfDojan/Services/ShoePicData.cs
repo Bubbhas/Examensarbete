@@ -31,8 +31,6 @@ namespace GameOfDojan.Services
                 .Include(x=>x.Likes)
                 .Include(x => x.Comments).ThenInclude(x => x.ApplicationUser)
                 .FirstOrDefault(p => p.Id == id);
-            //shoePic.Comments = _context.Comments.Where((x => x.Id == id)).ToList();
-
             return shoePic;
         }
 
