@@ -61,15 +61,23 @@ namespace GameOfDojan.Services
 
         public void GiveShoePicALike(int shoePicId, string currentUserId)
         {
-            //var shoePic = _context.Likes.Include(x=>x.ShoePics)
-            //    .Include(x=>x.ApplicationUser)
-            //    .FirstOrDefault(x=>x.Id == shoePicId);
+            Likes like = _context.Likes
+                .Where(x => x.ApplicationUserId == currentUserId && x.ShoePicId == shoePicId)
+                .FirstOrDefault();
 
-            _context.Likes.Add(new Likes
+            if (like == null)
             {
-                ShoePicId = shoePicId,
-                ApplicationUserId = currentUserId
-            });
+                _context.Likes.Add(new Likes
+                {
+                    ShoePicId = shoePicId,
+                    ApplicationUserId = currentUserId
+                });
+            }
+            else
+            {
+                _context.Likes.Remove(like);
+            }
+    
             
             _context.SaveChanges();
         }

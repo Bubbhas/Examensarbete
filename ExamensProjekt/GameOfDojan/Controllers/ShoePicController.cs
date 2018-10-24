@@ -126,7 +126,6 @@ namespace GameOfDojan.Controllers
                     shoePic.Probability = item.Probability;
             }
             return shoePic;
-
         }
 
         private void UploadPicToDataBase(ShoePic shoePic)
@@ -157,11 +156,9 @@ namespace GameOfDojan.Controllers
 
         public IActionResult UpdateDescriptionToShoePic(string description, int shoePicId)
         {
-            
             _shoePicData.UpdateShoePicDescription(description, shoePicId);
             var shoePic = _shoePicData.GetShoePicWithComments(shoePicId);
             return View("ShoePicWithComments", shoePic);
         }
-
     }
 }

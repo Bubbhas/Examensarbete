@@ -26,7 +26,6 @@ namespace GameOfDojan.Test
         {
           shoePicService.GetNewFilePath("DontValidate.pdf");
         }
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldReturnArgExceptionDueToNull()
