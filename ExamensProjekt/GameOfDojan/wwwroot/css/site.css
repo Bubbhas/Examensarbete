@@ -17,10 +17,8 @@ body {
     padding-top: 2px;
 }
 
-#submitButtonDiv button, input, optgroup, select, textarea {
+#submitButtonDiv  {
     margin: 10px;
-    font: inherit;
-    color: inherit;
 }
 /* Carousel */
 .carousel-caption p {
