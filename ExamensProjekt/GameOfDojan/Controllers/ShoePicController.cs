@@ -152,7 +152,6 @@ namespace GameOfDojan.Controllers
             return View("ShoePicWithComments", shoePic);
         }
 
-        //[HttpPost("AddComment")]
         public IActionResult AddCommentToShoePic(string text, int shoePicId)
         {
             if (UserIsAuthenticated())
