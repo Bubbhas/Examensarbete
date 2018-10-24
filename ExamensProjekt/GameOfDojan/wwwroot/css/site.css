@@ -547,3 +547,12 @@ navbar-logo:hover {
 a:hover, a:focus {
     text-decoration: none;
 }
+.like-img {
+    max-height: 20px;
+    margin-top:-10px;
+}
+.like-div {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
