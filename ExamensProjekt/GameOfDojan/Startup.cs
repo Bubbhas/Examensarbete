@@ -39,7 +39,15 @@ namespace GameOfDojan
             {
                 _configuration.Bind("AzureAd", options);
             })
-            .AddCookie();
+            .AddCookie().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = _configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = _configuration["Authentication:Google:ClientSecret"];
+            }).AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = _configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = _configuration["Authentication:Facebook:AppSecret"];
+            });
 
             services.Configure<CookiePolicyOptions>(options =>
             {
