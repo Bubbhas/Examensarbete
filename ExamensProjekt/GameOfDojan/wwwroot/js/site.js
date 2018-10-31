@@ -150,7 +150,7 @@ getAllUsers().then((result) => {
 function ValidateUploadType() {
     let imageSource = document.getElementById("uploadImage").value;
     let imageSize = document.getElementById("uploadImage").files[0].size;
-    if (!imageSource.endsWith(".jpg") && !imageSource.endsWith(".png")) {
+    if (!imageSource.toLowerCase().endsWith(".jpg") && !imageSource.toLowerCase().endsWith(".png")) {
         document.getElementById("errorMsg").innerHTML = "<p>Filen måste vara .jpg eller .png</p>";
         document.getElementById("submitButton").disabled = true; 
     }
